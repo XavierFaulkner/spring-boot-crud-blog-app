@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
     <h1>Home</h1>
-    <a href="#" th:href="@{/login}">Login page</a>
+    <li sec:authorize="isAuthenticated()"><a th:href="@{/logout}">Logout</a></li>
 </body>
 </html>
