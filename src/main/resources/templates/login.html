@@ -2,10 +2,68 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <link rel="icon" href="CFH_favicon.png">
+    <title>CFH:LB Login</title>
 </head>
 <body>
-    <h1>Login</h1>
-    <a href="#" th:href="@{/}">Home page</a>
+    <nav>
+        <a href="#" th:href="@{/}">Home</a>
+        <a href="#" th:href="@{/login}">Login</a>
+        <a href="#" th:href="@{/register}">Register</a>
+        <a href="#" th:href="@{/posts}">Posts</a>
+        <a href="#" th:href="@{/users}">Users</a>
+    </nav>
+
+    <h1>CFH Login</h1>
+
+    <!-- error message -->
+    <!-- <div th:if="">
+        <div class="alert alert-danger">Invalid username or password.</div>
+    </div> -->
+                    
+    <!-- logout message -->
+    <!-- <div th:if="">
+        <div class="alert alert-info">You have been logged out.</div>
+    </div> -->
+
+
+    <form>
+
+        <div class = "">
+            <label for ="username"> Username </label> :
+            <input type="text" 
+            class = ""
+            name = "username"
+            placeholder="Enter username">
+        </div>
+
+        <div class="">
+            <label for="password">Password</label>: 
+            <input type="password"
+                class=""
+                name = "password"
+                placeholder="Enter password" />
+        </div>
+        
+        <div class="">
+            <div class="">
+                <div class="">
+                    <input type="submit" 
+                        class="login button" 
+                        value="Log In" />
+                </div>
+            </div>
+        </div>
+
+        <div class="">
+            <span>New user? <a href="/" th:href="@{/registration}">Register here</a></span>
+        </div>
+
+    </form>
+
+
+    <footer>
+        <p>(c) 2022 The Astonishing X-Men</p>
+    </footer>
 </body>
 </html>
