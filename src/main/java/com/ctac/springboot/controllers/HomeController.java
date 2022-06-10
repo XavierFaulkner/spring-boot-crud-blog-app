@@ -14,4 +14,35 @@ public class HomeController {
     public String login() {
         return "login";
     }
+
+    @GetMapping("/register")
+    public String register() {
+        return "register";
+    }
+
+    @GetMapping("/posts")
+    public String posts() {
+        return "posts";
+    }
+
+    @GetMapping("/users")
+    public String users() {
+        return "users";
+    }
+
+    @GetMapping("/create-post")
+    public String createPost() {
+        return "create-post";
+    }
+
+    @GetMapping("/delete-post")
+    public String deletePost() {
+        return "delete-post";
+    }
+
+    @GetMapping("/edit-post")
+    public String editPost() {
+        return "edit-post";
+    }
+
 }

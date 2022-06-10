@@ -1,12 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Hello, world!</title>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <meta name="description" content="" />
+    <meta charset="UTF-8">
+    <link rel="icon" href="CFH_favicon.png">
+    <title>CFH:LB Login</title>
 </head>
 <body>
-<h1>Hello, world!</h1>
+    <nav>
+        <a href="#" th:href="@{/}">Home</a>
+        <a href="#" th:href="@{/login}">Login</a>
+        <a href="#" th:href="@{/register}">Register</a>
+        <a href="#" th:href="@{/posts}">Posts</a>
+        <a href="#" th:href="@{/users}">Users</a>
+    </nav>
+
+    <h1>CFH Login</h1>
+
+    <!-- error message -->
+    <!-- <div th:if="">
+        <div class="alert alert-danger">Invalid username or password.</div>
+    </div> -->
+                    
+    <!-- logout message -->
+    <!-- <div th:if="">
+        <div class="alert alert-info">You have been logged out.</div>
+    </div> -->
+
+
+    <form>
+
+        <div class = "">
+            <label for ="username"> Username </label> :
+            <input type="text" 
+            class = ""
+            name = "username"
+            placeholder="Enter username">
+        </div>
+
+        <div class="">
+            <label for="password">Password</label>: 
+            <input type="password"
+                class=""
+                name = "password"
+                placeholder="Enter password" />
+        </div>
+        
+        <div class="">
+            <div class="">
+                <div class="">
+                    <input type="submit" class="" 
+                        value="Log In" />
+                </div>
+            </div>
+        </div>
+
+        <div class="">
+            <span>New user? <a href="/" th:href="@{/register}">Register here</a></span>
+        </div>
+
+    </form>
+
+
+    <footer>
+        <p>(c) 2022 The Astonishing X-Men</p>
+    </footer>
 </body>
 </html>

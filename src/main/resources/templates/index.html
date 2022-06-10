@@ -3,10 +3,36 @@
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <link rel="icon" href="CFH_favicon.png">
+    <title>CFH LiveBlog</title>
 </head>
 <body>
-    <h1>Home</h1>
-    <li sec:authorize="isAuthenticated()"><a th:href="@{/logout}">Logout</a></li>
+    <nav>
+        <a href="#" th:href="@{/}">Home</a>
+        <a href="#" th:href="@{/login}">Login</a>
+        <a href="#" th:href="@{/register}">Register</a>
+        <a href="#" th:href="@{/posts}">Posts</a>
+        <a href="#" th:href="@{/users}">Users</a>
+    </nav>
+
+    <h1>Carolina Fintech Hub Live Blog</h1>
+
+    <div class = "blog container">
+        <div class = "blog one"></div>
+        <div class = "blog two"></div>
+        <div class = "blog three"></div>
+    </div>
+
+    <div class = "sidebar">
+        <p>Link one</p>
+        <p>Link two</p>
+        <p>Link three</p>
+        <p>Link four</p>
+        <p>Link five</p>
+    </div>
+
+    <footer>
+        <p>(c) 2022 The Astonishing X-Men</p>
+    </footer>
 </body>
 </html>

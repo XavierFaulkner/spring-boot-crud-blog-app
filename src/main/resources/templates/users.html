@@ -1,10 +1,48 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <link rel="icon" href="CFH_favicon.png">
+    <title>CFH:LB Users</title>
 </head>
 <body>
-    <h1>Users</h1>
+    <nav>
+        <a href="#" th:href="@{/}">Home</a>
+        <a href="#" th:href="@{/login}">Login</a>
+        <a href="#" th:href="@{/register}">Register</a>
+        <a href="#" th:href="@{/posts}">Posts</a>
+        <a href="#" th:href="@{/users}">Users</a>
+    </nav>
+
+    <div class="container">
+        <h1>Users</h1>
+
+
+        <table border="1" class="">
+        <thead>
+            <tr>
+                <th>Author ID</th>
+                <th>Username</th>
+                <th>First Name</th>
+                <th>Last Name</th>>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </tbody>
+        </table>
+
+    </div>
+
+
+    <footer>
+        <p>(c) 2022 The Astonishing X-Men</p>
+    </footer>
 </body>
 </html>
