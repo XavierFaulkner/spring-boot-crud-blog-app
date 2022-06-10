@@ -1,18 +1,38 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+	  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head>
     <meta charset="UTF-8">
-    <link rel="icon" href="CFH_favicon.png">
+	<link rel="icon" th:href="@{/images/CFH_favicon.png}">
     <title>CFH:LB Register</title>
+	<link th:href="@{/styles/nav-styles.css}" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
 <body>
-    <nav>
-        <a href="#" th:href="@{/}">Home</a>
-        <a href="#" th:href="@{/login}">Login</a>
-        <a href="#" th:href="@{/register}">Register</a>
-        <a href="#" th:href="@{/posts}">Posts</a>
-        <a href="#" th:href="@{/users}">Users</a>
-    </nav>
+	<nav class="navbar">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="index.html" th:href="@{/}"><img th:src="@{/images/cfh_header_logo.png}" alt="CFH Logo"></a>
+			</div>
+			<ul class="nav navbar-nav nav-font">
+				<li class="active nav-font" sec:authorize="isAnonymous()"><a href="index.html" th:href="@{/}"><span class="glyphicon glyphicon-home glyph-font"></span> Home</a></li>
+
+				<li class="active nav-font" sec:authorize="isAuthenticated()"><a th:href="@{/}">Home</a></li>
+				<li class="active nav-font" sec:authorize="isAuthenticated()"><a th:href="@{/posts}">Posts</a></li>
+				<li class="active nav-font" sec:authorize="isAuthenticated()"><a th:href="@{/posts/create}">Create Posts</a></li>
+				<li class="active nav-font" sec:authorize="isAuthenticated()"><a th:href="@{/users}">Users</a></li>
+			</ul>
+			<ul class="nav navbar-nav navbar-right nav-font">
+				<li><a href="users/register.html" sec:authorize="isAnonymous()" th:href="@{/register}"><span class="glyphicon glyphicon-user glyph-font"></span> Register</a></li>
+				<li><a href="users/login.html" sec:authorize="isAnonymous()" th:href="@{/login}"><span class="glyphicon glyphicon-log-in glyph-font"></span> Login</a></li>
+
+				<!--                <div sec:authorized="isAuthenticated()" class="span-display">Logged in as <span sec:authentication="principal.username">Username</span></div>-->
+				<li sec:authorize="isAuthenticated()"><a th:href="@{/logout}"><span class="glyphicon glyphicon-log-out glyph-font"></span> Logout</a></li>
+			</ul>
+		</div>
+	</nav>
 
     <h1>Register A New Account</h1>
 
@@ -26,25 +46,34 @@
 		<div class="">
 			<div class="">
 
-				<form>
+				<div th:if="${param.error}">
+					<div class="alert alert-danger">A user with this email already exists.</div>
+				</div>
+
+				<div th:if="${param.success}">
+					<div class="alert alert-info">You've successfully registered
+						to our awesome app!</div>
+				</div>
+
+				<form th:action="@{/register}" method="post" th:object="${user}">
 					<div class="">
 						<label class="" for="firstName"> First Name </label>
-						<input id="" class="" />
+						<input id="firstName" class="" th:field="*{firstName}"/>
 					</div>
 
 					<div class="">
-						<label class="" for=""> Last Name </label> 
-                        <input id="" class="" />
+						<label class="" for="lastName"> Last Name </label>
+                        <input id="lastName" class="" th:field="*{lastName}"/>
 					</div>
 
 					<div class="">
-						<label class="" for="username"> Username </label> 
-                        <input id="" class="" />
+						<label class="" for="email"> Email </label>
+                        <input id="email" class="" th:field="*{email}"/>
 					</div>
 
 					<div class="">
 						<label class="" for="password"> Password </label> 
-                        <input id="" class="" type="password" />
+                        <input id="password" class="" type="password" th:field="*{password}"/>
 					</div>
 
 					<div class="">

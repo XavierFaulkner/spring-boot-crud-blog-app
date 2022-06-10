@@ -1,0 +1,29 @@
+.nav { 
+    padding-top: 30px;
+}
+
+.nav-font li a {
+    color: #3A1027 !important;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 20px ;
+    font-variant: small-caps;
+    font-weight: bolder;
+}
+
+.glyph-font {
+    color: #D91A5F !important;
+    font-size: 20px ;
+}
+
+.log-in-display{
+    display: flex;
+    flex-direction: row;
+}
+
+.span-display{
+    color: #3A1027;
+    font-size: 14px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: bold;
+    padding-top: 18px;
+}
