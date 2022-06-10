@@ -1,12 +1,44 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
+    <link rel="stylesheet" href="style.css">
     <meta charset="UTF-8">
-    <title>Title</title>
+    <link rel="icon" href="CFH_favicon.png">
+    <title>CFH LiveBlog</title>
 </head>
 <body>
-    <h1>Home</h1>
-    <li sec:authorize="isAuthenticated()"><a th:href="@{/logout}">Logout</a></li>
+<nav>
+    <a href="#" th:href="@{/}">Home</a>
+    <a href="#" th:href="@{/login}">Login</a>
+    <a href="#" th:href="@{/register}">Register</a>
+    <a href="#" th:href="@{/posts}">Posts</a>
+    <a href="#" th:href="@{/users}">Users</a>
+</nav>
+
+<h1>Carolina Fintech Hub Live Blog</h1>
+<img>
+<div class = "sidebar">
+    <h3>Recent Posts</h3>
+    <p>Link one</p>
+    <p>Link two</p>
+    <p>Link three</p>
+    <p>Link four</p>
+    <p>Link five</p>
+</div>
+
+
+<div class = "container">
+    <h2>Posts</h2>
+    <div class = "blog one"></div>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias consequatur cupiditate deserunt distinctio error facilis in molestias nihil numquam officiis quibusdam saepe, sapiente temporibus ut velit vero voluptatum. Expedita, quam?</p>
+    <div class = "blog two"></div>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid assumenda, autem corporis iusto laudantium quaerat quasi quod soluta ut veritatis? Corporis ducimus ex explicabo iusto nam placeat quidem sed veritatis.</p>
+    <div class = "blog three"></div>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam animi deserunt doloremque, dolores eius eum, harum inventore ipsam minus natus, nesciunt numquam officia pariatur quasi quidem sed sint suscipit vitae!</p>
+</div>
+
+<footer>
+    <p>(c) 2022 The Astonishing X-Men</p>
+</footer>
 </body>
 </html>

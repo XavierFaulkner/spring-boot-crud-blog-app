@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <link rel="icon" href="CFH_favicon.png">
+    <title>CFH:LB Blogs</title>
+</head>
+<body>
+<nav>
+    <a href="#" th:href="@{/}">Home</a>
+    <a href="#" th:href="@{/login}">Login</a>
+    <a href="#" th:href="@{/register}">Register</a>
+    <a href="#" th:href="@{/posts}">Posts</a>
+    <a href="#" th:href="@{/users}">Users</a>
+</nav>
+
+<div class="container">
+    <h1>Blogs</h1>
+
+    <!-- successful login message -->
+    <!-- <div th:if="">
+        <div class="alert alert-xxx">Login Successful</div>
+    </div> -->
+
+    <!-- post created message -->
+    <!-- <div th:if="">
+        <div class="alert alert-xxx">Post created</div>
+    </div> -->
+
+    <!-- post deleted message -->
+    <!-- <div th:if="">
+        <div class="alert alert-xxx">Post has been deleted</div>
+    </div> -->
+
+    <!-- post edited message -->
+    <!-- <div th:if="">
+        <div class="alert alert-xxx">Post has been edited</div>
+    </div> -->
+
+    <table border="1" class="">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Title</th>
+            <th>Content</th>
+            <th>Date</th>
+            <th>Author ID</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                <a class="">Update</a>
+                <a class="">Delete</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+</div>
+
+
+<footer>
+    <p>(c) 2022 The Astonishing X-Men</p>
+</footer>
+</body>
+</html>

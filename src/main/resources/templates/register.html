@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <link rel="icon" href="CFH_favicon.png">
+    <title>CFH:LB Register</title>
+</head>
+<body>
+<nav>
+    <a href="#" th:href="@{/}">Home</a>
+    <a href="#" th:href="@{/login}">Login</a>
+    <a href="#" th:href="@{/register}">Register</a>
+    <a href="#" th:href="@{/posts}">Posts</a>
+    <a href="#" th:href="@{/users}">Users</a>
+</nav>
+
+
+
+
+<!-- successful registration message -->
+<!-- <div th:if="">
+    <div class="alert alert-info">You have successfully registered an account.</div>
+</div> -->
+
+<div class="container">
+
+    <div class="register-body">
+        <h1>Register A New Account</h1>
+        <div class="">
+
+            <form>
+                <div class="">
+                    <label class="" for="firstName"> First Name </label>
+                    <input id="" class="" />
+                </div>
+
+                <div class="">
+                    <label class="" for=""> Last Name </label>
+                    <input id="" class="" />
+                </div>
+
+                <div class="">
+                    <label class="" for="username"> Username </label>
+                    <input id="" class="" />
+                </div>
+
+                <div class="">
+                    <label class="" for="password"> Password </label>
+                    <input id="" class="" type="password" />
+                </div>
+
+                <div class="">
+                    <button type="submit" class="">Register</button>
+                    <br> <span>Already registered? <a href="/" th:href="@{/login}">Login
+								here</a></span>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <p>(c) 2022 The Astonishing X-Men</p>
+</footer>
+</body>
+</html>

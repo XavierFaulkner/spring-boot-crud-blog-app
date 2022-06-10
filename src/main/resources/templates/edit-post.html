@@ -4,7 +4,7 @@
     <link rel="stylesheet" href="style.css">
     <meta charset="UTF-8">
     <link rel="icon" href="CFH_favicon.png">
-    <title>CFH:LB New Blog</title>
+    <title>CFH:LB Edit Blog</title>
 </head>
 <body>
 <nav>
@@ -14,23 +14,23 @@
     <a href="#" th:href="@{/posts}">Posts</a>
     <a href="#" th:href="@{/users}">Users</a>
 </nav>
+<div class="blog-content">
+<h1>Edit a Blog</h1>
 
-<h1 class="new-blog">Create A New Blog</h1>
-<div class = "title">
+<div class = "">
     <label for ="title">Title</label> :
-    <input type="text" class = "blog-text"
-           name = "title"
-           placeholder="Enter Blog Title">
+    <input type="text" class = ""
+           name = "title" th:field = "">
 </div>
 
-<div class = "blog-content">
+<div class = "">
     <label for ="content">Content</label> :
     <textarea type="text" cols="40" rows="10"
-              name = "content" class = ""
-              placeholder="Enter Blog Content"></textarea>
+              name = "content" class = "" th:field = "">
+        </textarea>
 </div>
-<div class="buttons">
-<div class="submit-button">
+
+<div class="">
     <div class="">
         <div class="">
             <input type="submit" name="create-submit"
@@ -38,13 +38,21 @@
         </div>
     </div>
 </div>
-<div class="cancel-button">
+<div class="">
     <div class="">
         <div class="">
             <input type="submit" name="cancel-submit"
                    class="" value="Cancel" />
         </div>
     </div>
+</div>
+
+<div>
+    <p>Date: 00/00/0000 </p>
+</div>
+
+<div>
+    <p>Author ID: 000</p>
 </div>
 </div>
 <footer>
