@@ -20,10 +20,10 @@ public class HomeController {
         return "posts";
     }
 
-    @GetMapping("/users")
-    public String users() {
-        return "users";
-    }
+    // @GetMapping("/users")
+    // public String users() {
+    //     return "users";
+    // }
 
     @GetMapping("/create-post")
     public String createPost() {
