@@ -2,6 +2,7 @@ package com.ctac.springboot.models;
 
 import javax.persistence.*;
 import java.util.Collection;
+import javax.persistence.GenerationType;
 
 @Entity
 @Table(name = "user", uniqueConstraints = @UniqueConstraint(columnNames = "email"))
