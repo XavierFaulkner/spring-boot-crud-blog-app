@@ -16,10 +16,6 @@ import org.springframework.ui.Model;
 
 @Controller
 public class HomeController {
-    /*@GetMapping("/")
-    public String home() {
-        return "index";
-    }*/
 
     @GetMapping("/login")
     public String login() {
@@ -59,7 +55,7 @@ public class HomeController {
     model.addAttribute("latest3posts", latest3Posts);
 
     return "index";
-}
+    }
 
 
 }

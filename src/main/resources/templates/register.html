@@ -25,10 +25,13 @@
 				<li class="active nav-font" sec:authorize="isAuthenticated()"><a th:href="@{/users}">Users</a></li>
 			</ul>
 			<ul class="nav navbar-nav navbar-right nav-font">
+				<li class="span-display" th:switch="${#authentication}? ${#authorization.expression('isAuthenticated()')} : ${false}">
+					Logged in as
+					<span th:case="${false}">Guest</span>
+					<span th:case="${true}"><span sec:authentication="principal.username">Username</span></span>
+				</li>
 				<li><a href="users/register.html" sec:authorize="isAnonymous()" th:href="@{/register}"><span class="glyphicon glyphicon-user glyph-font"></span> Register</a></li>
 				<li><a href="users/login.html" sec:authorize="isAnonymous()" th:href="@{/login}"><span class="glyphicon glyphicon-log-in glyph-font"></span> Login</a></li>
-
-				<li sec:authorized="isAuthenticated()" class="span-display">Logged in as <span sec:authentication="principal.username">Username</span></li>
 				<li sec:authorize="isAuthenticated()"><a th:href="@{/logout}"><span class="glyphicon glyphicon-log-out glyph-font"></span> Logout</a></li>
 			</ul>
 		</div>
@@ -87,7 +90,7 @@
 	</div>
 
     <footer>
-        <p>(c) 2022 The Astonishing X-Men</p>
+        <p>&copy 2022 The Astonishing X-Men</p>
     </footer>
 </body>
 </html>
