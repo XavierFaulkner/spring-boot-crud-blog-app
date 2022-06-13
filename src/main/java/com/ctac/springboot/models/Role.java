@@ -1,6 +1,7 @@
 package com.ctac.springboot.models;
 
 import javax.persistence.*;
+import javax.persistence.GenerationType;
 
 @Entity
 @Table(name = "role")
