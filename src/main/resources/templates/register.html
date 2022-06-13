@@ -21,7 +21,7 @@
 
 				<li class="active nav-font" sec:authorize="isAuthenticated()"><a th:href="@{/}">Home</a></li>
 				<li class="active nav-font" sec:authorize="isAuthenticated()"><a th:href="@{/posts}">Posts</a></li>
-				<li class="active nav-font" sec:authorize="isAuthenticated()"><a th:href="@{/posts/create-post}">Create Posts</a></li>
+				<li class="active nav-font" sec:authorize="isAuthenticated()"><a th:href="@{/create-post}">Create Posts</a></li>
 				<li class="active nav-font" sec:authorize="isAuthenticated()"><a th:href="@{/users}">Users</a></li>
 			</ul>
 			<ul class="nav navbar-nav navbar-right nav-font">
@@ -36,7 +36,7 @@
 
     <h1>Register A New Account</h1>
 
-	
+
         <!-- successful registration message -->
     <!-- <div th:if="">
         <div class="alert alert-info">You have successfully registered an account.</div>
