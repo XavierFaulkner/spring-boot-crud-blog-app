@@ -28,7 +28,7 @@
                 <li><a href="users/register.html" sec:authorize="isAnonymous()" th:href="@{/register}"><span class="glyphicon glyphicon-user glyph-font"></span> Register</a></li>
                 <li><a href="users/login.html" sec:authorize="isAnonymous()" th:href="@{/login}"><span class="glyphicon glyphicon-log-in glyph-font"></span> Login</a></li>
 
-                <li sec:authorized="isAuthenticated()" class="span-display">Logged in as <span sec:authentication="principal.username">Username</span></li>
+                <li sec:authorized="isAuthenticated()" class="span-display">Logged in as <span sec:authentication="name">Username</span></li>
                 <li sec:authorize="isAuthenticated()"><a th:href="@{/logout}"><span class="glyphicon glyphicon-log-out glyph-font"></span> Logout</a></li>
             </ul>
         </div>
@@ -44,7 +44,7 @@
                 <th>Author ID</th>
                 <th>Username</th>
                 <th>First Name</th>
-                <th>Last Name</th>>
+                <th>Last Name</th><!--removed extra >-->
             </tr>
         </thead>
 
