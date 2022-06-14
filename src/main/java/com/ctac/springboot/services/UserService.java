@@ -14,4 +14,6 @@ public interface UserService extends UserDetailsService {
     List<User> getAllUsers();
 
     Page<User> userPagination(int pageNo, int pageSize);
+  
+    User getUserByUsername(String username);
 }

@@ -1,16 +1,10 @@
 package com.ctac.springboot.models;
 
+import java.util.Collection;
 import java.util.Date;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
+import javax.persistence.*;
 import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Lob;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
 
 
 @Entity
@@ -29,7 +23,7 @@ public class Post {
     private String content;
 
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
-    private User author;
+    private User author; //= new User("","","","",  null);
 
     @Column(nullable = false)
     private Date date = new Date();
@@ -38,6 +32,12 @@ public class Post {
 
     public Post(long id, String title, String content, User author){
         this.id  = id;
+        this.title = title;
+        this.content = content;
+        this.author = author;
+    }
+
+    public Post(String title, String content, User author){
         this.title = title;
         this.content = content;
         this.author = author;

@@ -22,40 +22,4 @@ public class HomeController {
         return "login";
     }
 
-    @GetMapping("/posts")
-    public String posts() {
-        return "posts";
-    }
-
-    @GetMapping("/create-post")
-    public String createPost() {
-        return "create-post";
-    }
-
-    @GetMapping("/delete-post")
-    public String deletePost() {
-        return "delete-post";
-    }
-
-    @GetMapping("/edit-post")
-    public String editPost() {
-        return "edit-post";
-    }
-
-    @Autowired
-    private PostService postService;
-
-    @GetMapping("/")
-    public String index(Model model) {
-    List<Post> latest5Posts = postService.findLatest5();
-    model.addAttribute("latest5posts", latest5Posts);
-
-    List<Post> latest3Posts = latest5Posts.stream()
-    .limit(3).collect(Collectors.toList());
-    model.addAttribute("latest3posts", latest3Posts);
-
-    return "index";
-    }
-
-
 }
