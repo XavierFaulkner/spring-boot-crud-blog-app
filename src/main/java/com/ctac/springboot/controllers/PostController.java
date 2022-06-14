@@ -26,7 +26,22 @@ public class PostController {
     }
 
     @GetMapping("/posts")
-    public String posts() {
+    public String viewUserTable(Model model) {
+        return userPagination(1, model);
+    }
+
+    @GetMapping("/pages/{pageNo}")
+    public String userPagination(@PathVariable(value = "pageNo") int pageNo, Model model) {
+        int pageSize = 5;
+
+        Page <Post> pages = postService.postPagination(pageNo, pageSize);
+        List <Post> listPosts = pages.getContent();
+
+        model.addAttribute("currentPage", pageNo);
+        model.addAttribute("totalPages", pages.getTotalPages());
+        model.addAttribute("totalItems", pages.getTotalElements());
+        model.addAttribute("listPosts", listPosts);
+        
         return "posts";
     }
 
