@@ -38,7 +38,6 @@ public class PostController {
         title = model.getAttribute("title");
         content = model.getAttribute("content");
         Post post = new Post((String)title,(String)content,user);
-//        post.setAuthor(user);
         model.addAttribute("post", post);
         return "create-post";
     }
@@ -52,9 +51,10 @@ public class PostController {
         return "redirect:/";
     }
 
-    @GetMapping("/delete-post")
-    public String deletePost() {
-        return "delete-post";
+    @GetMapping("/delete-post/{id}")
+    public String deletePost(@PathVariable (value = "id") long id) {
+        this.postService.deleteById(id);
+        return "redirect:/";
     }
 
     @GetMapping("/edit-post")
