@@ -13,6 +13,8 @@ public interface UserService extends UserDetailsService {
 
     List<User> getAllUsers();
 
+    User findByEmail(String email);
+
     Page<User> userPagination(int pageNo, int pageSize);
   
     User getUserByUsername(String username);

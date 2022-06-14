@@ -26,6 +26,10 @@ import com.ctac.springboot.repository.UserRepository;
 @Service
 public class UserServiceImpl implements UserService{
 
+    public User findByEmail(String email) {
+        return userRepository.findByEmail(email);
+    }
+
     @Autowired
     private UserRepository userRepository;
 
