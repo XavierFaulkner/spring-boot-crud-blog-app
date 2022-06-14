@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+    xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head>
     <meta charset="UTF-8">
     <link rel="icon" th:href="@{/images/CFH_favicon.png}">
@@ -11,79 +11,27 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
 <body>
-    <nav class="navbar">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <a class="navbar-brand" href="index.html" th:href="@{/}"><img th:src="@{/images/cfh_header_logo.png}" alt="CFH Logo"></a>
-            </div>
-            <ul class="nav navbar-nav nav-font">
-                <li class="active nav-font" sec:authorize="isAnonymous()"><a href="index.html" th:href="@{/}"><span class="glyphicon glyphicon-home glyph-font"></span> Home</a></li>
 
-                <li class="active nav-font" sec:authorize="isAuthenticated()"><a th:href="@{/}">Home</a></li>
-                <li class="active nav-font" sec:authorize="isAuthenticated()"><a th:href="@{/posts}">Posts</a></li>
-                <li class="active nav-font" sec:authorize="isAuthenticated()"><a th:href="@{/create-post}">Create Posts</a></li>
-                <li class="active nav-font" sec:authorize="isAuthenticated()"><a th:href="@{/users}">Users</a></li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right nav-font">
-                <li class="span-display" th:switch="${#authentication}? ${#authorization.expression('isAuthenticated()')} : ${false}">
-                    
-                    <span th:case="${false}"></span>
-                    <span th:case="${true}">Logged in as <span sec:authentication="principal.username">Username</span></span>
-                </li>
-                <li><a href="users/register.html" sec:authorize="isAnonymous()" th:href="@{/register}"><span class="glyphicon glyphicon-user glyph-font"></span> Register</a></li>
-                <li><a href="users/login.html" sec:authorize="isAnonymous()" th:href="@{/login}"><span class="glyphicon glyphicon-log-in glyph-font"></span> Login</a></li>
-                <li sec:authorize="isAuthenticated()"><a th:href="@{/logout}"><span class="glyphicon glyphicon-log-out glyph-font"></span> Logout</a></li>
-            </ul>
-        </div>
-    </nav>
+    <nav th:insert="fragments :: nav"></nav>
 
     <h1>Create A New Blog</h1>
 
-    <!--<div class = "">
+    <form action="#" th:action="@{/create}" th:object="${post}" method="POST">
         <label for ="title">Title</label> :
         <input type="text" class = ""
-        name = "title" id="title"
-        placeholder="Enter Blog Title" th:field="*{title}">
-    </div>
-    
-    <div class = "">
+               name = "title" id="title"
+               th:field="*{title}"
+               placeholder="Enter Blog Title">
         <label for="content">Content</label> :
-        <textarea type="text" cols="40" rows="10" 
-        name="content" id="content" class = ""
-        placeholder="Enter Blog Content" th:field="*{content}"></textarea>
-    </div>
-    
-    <div class="">
-        <div class="">
-            <div class="">
-                <input type="submit" name="create-submit"
-                    class="" value="Create" th:action="@{/add}" th:object="${post}" />
-            </div>
-        </div>
-    </div>
-    <div class="">
-        <div class="">
-            <div class="">
-                <input type="submit" name="cancel-submit"
-                    class="" value="Cancel" />
-            </div>
-        </div>
-    </div>-->
+        <textarea type="text" cols="40" rows="10"
+                  name="content" id="content" class = ""
+                  th:field="*{content}"
+                  placeholder="Enter Blog Content"></textarea>
+        <button type="submit">Post</button>
+        <button>Cancel</button>
+    </form>
 
-    <form th:action="@{/add}" th:object="${post}" method="post">
-        <label for="title">Title</label><br>
-        <input type="text" id="title" name="title" th:attr="value = ${title}"><br>
-        <label for="content">Content</label><br>
-        <textarea rows="5" cols="60" name="content" placeholder="Enter text" th:attr="value = ${content}"></textarea>
-        <div>
-            <input type="submit" value="Submit">
-            <input type="submit" value="Cancel">
-        </div>
-      </form> 
-
-    <footer>
-        <p>&copy 2022 The Astonishing X-Men</p>
-    </footer>
+    <footer th:insert="fragments :: footer"></footer>
 
 </body>
 </html>

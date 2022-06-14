@@ -12,34 +12,10 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
 <body>
-	<nav class="navbar">
-		<div class="container-fluid">
-			<div class="navbar-header">
-				<a class="navbar-brand" href="index.html" th:href="@{/}"><img th:src="@{/images/cfh_header_logo.png}" alt="CFH Logo"></a>
-			</div>
-			<ul class="nav navbar-nav nav-font">
-				<li class="active nav-font" sec:authorize="isAnonymous()"><a href="index.html" th:href="@{/}"><span class="glyphicon glyphicon-home glyph-font"></span> Home</a></li>
 
-				<li class="active nav-font" sec:authorize="isAuthenticated()"><a th:href="@{/}">Home</a></li>
-				<li class="active nav-font" sec:authorize="isAuthenticated()"><a th:href="@{/posts}">Posts</a></li>
-				<li class="active nav-font" sec:authorize="isAuthenticated()"><a th:href="@{/create-post}">Create Posts</a></li>
-				<li class="active nav-font" sec:authorize="isAuthenticated()"><a th:href="@{/users}">Users</a></li>
-			</ul>
-			<ul class="nav navbar-nav navbar-right nav-font">
-				<li class="span-display" th:switch="${#authentication}? ${#authorization.expression('isAuthenticated()')} : ${false}">
-					<!--Logged in as-->
-					<span th:case="${false}"></span>
-					<span th:case="${true}">Logged in as <span sec:authentication="principal.username">Username</span></span>
-				</li>
-				<li><a href="users/register.html" sec:authorize="isAnonymous()" th:href="@{/register}"><span class="glyphicon glyphicon-user glyph-font"></span> Register</a></li>
-				<li><a href="users/login.html" sec:authorize="isAnonymous()" th:href="@{/login}"><span class="glyphicon glyphicon-log-in glyph-font"></span> Login</a></li>
-				<li sec:authorize="isAuthenticated()"><a th:href="@{/logout}"><span class="glyphicon glyphicon-log-out glyph-font"></span> Logout</a></li>
-			</ul>
-		</div>
-	</nav>
+	<nav th:insert="fragments :: nav"></nav>
 
     <h1>Register A New Account</h1>
-
 
         <!-- successful registration message -->
     <!-- <div th:if="">
@@ -90,8 +66,7 @@
 		</div>
 	</div>
 
-    <footer>
-        <p>&copy 2022 The Astonishing X-Men</p>
-    </footer>
+	<footer th:insert="fragments :: footer"></footer>
+
 </body>
 </html>
