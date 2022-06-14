@@ -5,6 +5,7 @@ import com.ctac.springboot.models.User;
 import com.ctac.springboot.services.PostService;
 import com.ctac.springboot.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -26,24 +27,29 @@ public class PostController {
     }
 
     @GetMapping("/posts")
-    public String viewUserTable(Model model) {
-        return userPagination(1, model);
-    }
-
-    @GetMapping("/pages/{pageNo}")
-    public String userPagination(@PathVariable(value = "pageNo") int pageNo, Model model) {
-        int pageSize = 5;
-
-        Page <Post> pages = postService.postPagination(pageNo, pageSize);
-        List <Post> listPosts = pages.getContent();
-
-        model.addAttribute("currentPage", pageNo);
-        model.addAttribute("totalPages", pages.getTotalPages());
-        model.addAttribute("totalItems", pages.getTotalElements());
-        model.addAttribute("listPosts", listPosts);
-        
+    public String posts() {
         return "posts";
     }
+
+    // @GetMapping("/posts")
+    // public String viewUserTable(Model model) {
+    //     return userPagination(1, model);
+    // }
+
+    // @GetMapping("/pages/{pageNo}")
+    // public String userPagination(@PathVariable(value = "pageNo") int pageNo, Model model) {
+    //     int pageSize = 5;
+
+    //     Page <Post> pages = postService.postPagination(pageNo, pageSize);
+    //     List <Post> listPosts = pages.getContent();
+
+    //     model.addAttribute("currentPage", pageNo);
+    //     model.addAttribute("totalPages", pages.getTotalPages());
+    //     model.addAttribute("totalItems", pages.getTotalElements());
+    //     model.addAttribute("listPosts", listPosts);
+        
+    //     return "posts";
+    // }
 
     @GetMapping("/create-post")
     public String createPostPage(Model model) {
