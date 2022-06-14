@@ -1,8 +1,10 @@
 package com.ctac.springboot.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -22,10 +24,10 @@ public class HomeController {
         return "login";
     }
 
-    @GetMapping("/posts")
-    public String posts() {
-        return "posts";
-    }
+    // @GetMapping("/posts")
+    // public String posts() {
+    //     return "posts";
+    // }
 
     @GetMapping("/create-post")
     public String createPost() {
@@ -57,5 +59,24 @@ public class HomeController {
     return "index";
     }
 
+    @GetMapping("/posts")
+    public String viewPostTable (Model model) {
+        return postPagination(1, model);
+    }
+
+    @GetMapping("/pageview/{pageNo}")
+    public String postPagination(@PathVariable(value = "pageNo") int pageNo, Model model) {
+        int pageSize = 5;
+
+        Page <Post> pageview = postService.postPagination(pageNo, pageSize);
+        List <Post> listPosts = pageview.getContent();
+
+        model.addAttribute("currentPage", pageNo);
+        model.addAttribute("totalPages", pageview.getTotalPages());
+        model.addAttribute("totalItems", pageview.getTotalElements());
+        model.addAttribute("listPosts", listPosts);
+        
+        return "posts";
+    }
 
 }
