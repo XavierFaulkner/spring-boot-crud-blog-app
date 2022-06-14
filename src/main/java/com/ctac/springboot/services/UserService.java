@@ -5,6 +5,7 @@ import com.ctac.springboot.models.User;
 
 import java.util.List;
 
+import org.springframework.data.domain.Page;
 import org.springframework.security.core.userdetails.UserDetailsService;
 
 public interface UserService extends UserDetailsService {
@@ -12,5 +13,7 @@ public interface UserService extends UserDetailsService {
 
     List<User> getAllUsers();
 
+    Page<User> userPagination(int pageNo, int pageSize);
+  
     User getUserByUsername(String username);
 }
