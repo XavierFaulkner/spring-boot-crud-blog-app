@@ -51,12 +51,12 @@
         <tr >
             
         <tbody>
-            <tr th:each = "user : ${listPosts}">
+            <tr th:each = "post : ${listPosts}">
                 <td th:text = "${post.id}"></td>
                 <td th:text = "${post.title}"></td>
                 <td th:text = "${post.content}"></td>
                 <td th:text = "${post.date}"></td>
-                <td th:text = "${user.id}"></td>
+                <td th:text = "${post.authorid}"></td>
                 <td>
                     <a class="">Update</a>
                     <a class="">Delete</a>
