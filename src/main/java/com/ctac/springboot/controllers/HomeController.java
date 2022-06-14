@@ -3,6 +3,8 @@ package com.ctac.springboot.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -16,10 +18,6 @@ import org.springframework.ui.Model;
 
 @Controller
 public class HomeController {
-    /*@GetMapping("/")
-    public String home() {
-        return "index";
-    }*/
 
     @GetMapping("/login")
     public String login() {
@@ -29,11 +27,6 @@ public class HomeController {
     @GetMapping("/posts")
     public String posts() {
         return "posts";
-    }
-
-    @GetMapping("/users")
-    public String users() {
-        return "users";
     }
 
     @GetMapping("/create-post")
@@ -64,7 +57,13 @@ public class HomeController {
     model.addAttribute("latest3posts", latest3Posts);
 
     return "index";
-}
+    }
+
+    @PostMapping("/add")
+	public String addPost(@ModelAttribute Post post) {	
+		postService.create(post);
+		return "redirect:/posts";
+	}
 
 
 }
