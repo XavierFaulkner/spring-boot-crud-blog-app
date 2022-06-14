@@ -12,11 +12,12 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
 <body>
+  
     <nav th:insert="fragments :: nav"></nav>
     
     <h1>Carolina Fintech Hub Live Blog</h1>
 
-    <div class = "blog container">
+    <div class = "blog container" th:text="${latest3Posts}">
         <div class = "blog one"></div>
         <div class = "blog two"></div>
         <div class = "blog three"></div>

@@ -13,9 +13,6 @@ import com.ctac.springboot.services.PostService;
 import org.springframework.ui.Model;
 
 
-
-
-
 @Controller
 public class HomeController {
 
@@ -29,54 +26,54 @@ public class HomeController {
     //     return "posts";
     // }
 
-    @GetMapping("/create-post")
-    public String createPost() {
-        return "create-post";
-    }
+    // @GetMapping("/create-post")
+    // public String createPost() {
+    //     return "create-post";
+    // }
 
-    @GetMapping("/delete-post")
-    public String deletePost() {
-        return "delete-post";
-    }
+    // @GetMapping("/delete-post")
+    // public String deletePost() {
+    //     return "delete-post";
+    // }
 
-    @GetMapping("/edit-post")
-    public String editPost() {
-        return "edit-post";
-    }
+    // @GetMapping("/edit-post")
+    // public String editPost() {
+    //     return "edit-post";
+    // }
 
-    @Autowired
-    private PostService postService;
+    // @Autowired
+    // private PostService postService;
 
-    @GetMapping("/")
-    public String index(Model model) {
-    List<Post> latest5Posts = postService.findLatest5();
-    model.addAttribute("latest5posts", latest5Posts);
+    // @GetMapping("/")
+    // public String index(Model model) {
+    // List<Post> latest5Posts = postService.findLatest5();
+    // model.addAttribute("latest5posts", latest5Posts);
 
-    List<Post> latest3Posts = latest5Posts.stream()
-    .limit(3).collect(Collectors.toList());
-    model.addAttribute("latest3posts", latest3Posts);
+    // List<Post> latest3Posts = latest5Posts.stream()
+    // .limit(3).collect(Collectors.toList());
+    // model.addAttribute("latest3posts", latest3Posts);
 
-    return "index";
-    }
+    // return "index";
+    // }
 
-    @GetMapping("/posts")
-    public String viewPostTable (Model model) {
-        return postPagination(1, model);
-    }
+    // @GetMapping("/posts")
+    // public String viewPostTable (Model model) {
+    //     return postPagination(1, model);
+    // }
 
-    @GetMapping("/pageview/{pageNo}")
-    public String postPagination(@PathVariable(value = "pageNo") int pageNo, Model model) {
-        int pageSize = 5;
+    // @GetMapping("/pageview/{pageNo}")
+    // public String postPagination(@PathVariable(value = "pageNo") int pageNo, Model model) {
+    //     int pageSize = 5;
 
-        Page <Post> pageview = postService.postPagination(pageNo, pageSize);
-        List <Post> listPosts = pageview.getContent();
+    //     Page <Post> pageview = postService.postPagination(pageNo, pageSize);
+    //     List <Post> listPosts = pageview.getContent();
 
-        model.addAttribute("currentPage", pageNo);
-        model.addAttribute("totalPages", pageview.getTotalPages());
-        model.addAttribute("totalItems", pageview.getTotalElements());
-        model.addAttribute("listPosts", listPosts);
+    //     model.addAttribute("currentPage", pageNo);
+    //     model.addAttribute("totalPages", pageview.getTotalPages());
+    //     model.addAttribute("totalItems", pageview.getTotalElements());
+    //     model.addAttribute("listPosts", listPosts);
         
-        return "posts";
-    }
+    //     return "posts";
+    // }
 
 }

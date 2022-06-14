@@ -26,6 +26,10 @@ import com.ctac.springboot.repository.UserRepository;
 @Service
 public class UserServiceImpl implements UserService{
 
+    public User findByEmail(String email) {
+        return userRepository.findByEmail(email);
+    }
+
     @Autowired
     private UserRepository userRepository;
 
@@ -54,6 +58,16 @@ public class UserServiceImpl implements UserService{
         }
         return new org.springframework.security.core.userdetails.User(user.getEmail(), user.getPassword(), mapRolesToAuthorities(user.getRoles()));
     }
+
+    @Override
+    public User getUserByUsername(String username) throws UsernameNotFoundException {
+        User user = userRepository.findByEmail(username);
+        if(user == null) {
+            throw new UsernameNotFoundException("Invalid username or password.");
+        }
+        return user;
+    }
+
     private Collection<? extends GrantedAuthority> mapRolesToAuthorities(Collection<Role> roles){
         return roles.stream().map(role -> new SimpleGrantedAuthority(role.getName())).collect(Collectors.toList());
     }
