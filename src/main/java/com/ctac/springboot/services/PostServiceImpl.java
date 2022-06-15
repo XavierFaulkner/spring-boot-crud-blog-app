@@ -39,10 +39,20 @@ public class PostServiceImpl implements PostService {
     public Post edit(Post post) {
     return this.postRepository.save(post);
     }
+
+    @Override
+    public void save(Post post) {
+        this.postRepository.save(post);
+    }
     
     @Override
     public void deleteById(Long id) {
     this.postRepository.deleteById(id);
+    }
+
+    @Override
+    public Optional<Post> findById(Long id){
+        return this.postRepository.findById(id);
     }
   
 
