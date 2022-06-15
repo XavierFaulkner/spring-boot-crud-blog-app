@@ -5,6 +5,7 @@ import com.ctac.springboot.models.User;
 import com.ctac.springboot.services.PostService;
 import com.ctac.springboot.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,6 +17,7 @@ import java.util.stream.Collectors;
 @Controller
 public class PostController {
 
+    @Autowired
     private PostService postService;
     private UserService userService;
 
@@ -25,8 +27,29 @@ public class PostController {
         this.userService = userService;
     }
 
+    // @GetMapping("/posts")
+    // public String viewPostsTable(Model model) {
+    //     model.addAttribute("listPosts", postService.findAll());
+    //     return "posts";
+    // }
+
     @GetMapping("/posts")
-    public String posts() {
+    public String viewUserTable(Model model) {
+        return userPagination(1, model);
+    }
+
+    @GetMapping("/pages/{pageNo}")
+    public String userPagination(@PathVariable(value = "pageNo") int pageNo, Model model) {
+        int pageSize = 5;
+
+        Page <Post> pages = postService.postPagination(pageNo, pageSize);
+        List <Post> listPosts = pages.getContent();
+
+        model.addAttribute("currentPage", pageNo);
+        model.addAttribute("totalPages", pages.getTotalPages());
+        model.addAttribute("totalItems", pages.getTotalElements());
+        model.addAttribute("listPosts", listPosts);
+        
         return "posts";
     }
 
