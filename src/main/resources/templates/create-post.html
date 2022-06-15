@@ -27,8 +27,8 @@
                   name="content" id="content" class = ""
                   th:field="*{content}"
                   placeholder="Enter Blog Content"></textarea>
-        <button type="submit">Post</button>
-        <button>Cancel</button>
+        <button type="submit" class="btn btn-default">Post</button>
+        <a th:href="@{/posts}" class="btn btn-default">Cancel</a>
     </form>
 
     <footer th:insert="fragments :: footer"></footer>

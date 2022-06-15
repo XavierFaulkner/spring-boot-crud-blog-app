@@ -87,14 +87,25 @@ public class PostController {
         return "redirect:/";
     }
 
+    @PostMapping("/save")
+    public String updatePost(@ModelAttribute("post") Post post) {
+        String authUsername = SecurityContextHolder.getContext().getAuthentication().getName();
+        User user = userService.getUserByUsername(authUsername);
+        post.setAuthor(user);
+        postService.create(post);
+        return "redirect:/";
+    }
+
     @GetMapping("/delete-post/{id}")
     public String deletePost(@PathVariable (value = "id") long id) {
         this.postService.deleteById(id);
         return "redirect:/posts";
     }
 
-    @GetMapping("/edit-post")
-    public String editPost() {
+    @GetMapping("/edit-post/{id}")
+    public String editPost(@PathVariable (value = "id") Long id, Model model) {
+        Post post = postService.findById(id).get();
+        model.addAttribute("post", post);
         return "edit-post";
     }
 
