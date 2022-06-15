@@ -17,10 +17,14 @@
     
     <h1>Carolina Fintech Hub Live Blog</h1>
 
-    <div class = "blog container" th:text="${latest3Posts}">
-        <div class = "blog one"></div>
-        <div class = "blog two"></div>
-        <div class = "blog three"></div>
+    <div id="firstThreeBlogs">
+        <div class="blogContainer" th:each="post : ${latest3posts}">
+            <h1 th:text = "${post.title}"></h1>
+            <p th:text = "${post.authorFullName}"></p>
+            <p th:text = "${post.date}"></p>
+            <p th:text = "${post.content}"></p>
+            <p th:text = "${post.id}"></p>
+        </div>
     </div>
 
     <div class = "sidebar">

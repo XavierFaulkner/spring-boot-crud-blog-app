@@ -19,12 +19,6 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    // @GetMapping("/users")
-    // public String viewUserTable(Model model) {
-    //     model.addAttribute("listUsers", userService.getAllUsers());
-    //     return "users";
-    // }
-
     @GetMapping("/users")
     public String viewUserTable(Model model) {
         return userPagination(1, model);

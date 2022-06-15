@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" th:href="@{/images/CFH_favicon.png}">
+    <title>CFH:LB Blogs</title>
+    <link th:href="@{/styles/nav-styles.css}" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<nav th:insert="fragments :: nav"></nav>
+
+<div class="container">
+    <h1 th:text = "${title}"></h1>
+    <p th:text = "${authorFullName}"></p>
+    <p th:text = "${date}"></p>
+    <p th:text = "${content}"></p>
+    <p th:text = "${id}"></p>
+</div>
+
+<footer th:insert="fragments :: footer"></footer>
+
+</body>
+</html>
