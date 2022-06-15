@@ -1,5 +1,6 @@
-package com.ctac.springboot.controllers.dto;
+package com.ctac.springboot.controllers;
 
+import com.ctac.springboot.controllers.dto.UserRegistrationDto;
 import com.ctac.springboot.services.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -9,7 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/registration")
+@RequestMapping("/register")
 public class RegistrationController {
 
     private UserService userService;
@@ -26,12 +27,12 @@ public class RegistrationController {
 
     @GetMapping
     public String showRegistrationForm() {
-        return "registration";
+        return "register";
     }
 
     @PostMapping
     public String registerUserAccount(@ModelAttribute("user") UserRegistrationDto registrationDto) {
         userService.save(registrationDto);
-        return "redirect:/registration?success";
+        return "redirect:/register?success";
     }
 }
