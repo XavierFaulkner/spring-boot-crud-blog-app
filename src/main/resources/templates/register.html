@@ -1,109 +1,45 @@
 <!DOCTYPE html>
-<<<<<<< HEAD
-<html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <link rel="stylesheet" href="../static/styles/style.css">
-    <meta charset="UTF-8">
-    <link rel="icon" href="../static/images/CFH_favicon.png">
-    <title>CFH:LB Register</title>
-</head>
-<body>
-<nav>
-    <a href="#" th:href="@{/}">Home</a>
-    <a href="#" th:href="@{/login}">Login</a>
-    <a href="#" th:href="@{/register}">Register</a>
-    <a href="#" th:href="@{/posts}">Posts</a>
-    <a href="#" th:href="@{/users}">Users</a>
-</nav>
-
-
-
-
-<!-- successful registration message -->
-<!-- <div th:if="">
-    <div class="alert alert-info">You have successfully registered an account.</div>
-</div> -->
-
-<div class="container">
-
-    <div class="register-body">
-        <h1>Register A New Account</h1>
-        <div class="">
-
-            <form>
-                <div class="">
-                    <label class="" for="firstName"> First Name </label>
-                    <input id="" class="" />
-                </div>
-
-                <div class="">
-                    <label class="" for=""> Last Name </label>
-                    <input id="" class="" />
-                </div>
-
-                <div class="">
-                    <label class="" for="username"> Username </label>
-                    <input id="" class="" />
-                </div>
-
-                <div class="">
-                    <label class="" for="password"> Password </label>
-                    <input id="" class="" type="password" />
-                </div>
-
-                <div class="">
-                    <button type="submit" class="">Register</button>
-                    <br> <span>Already registered? <a href="/" th:href="@{/login}">Login
-								here</a></span>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
-
-<footer>
-    <p>(c) 2022 The Astonishing X-Men</p>
-</footer>
-=======
 <html xmlns:th="http://www.thymeleaf.org"
-	  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+	  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3" lang="en">
 <head>
-    <meta charset="UTF-8">
-	<link rel="icon" th:href="@{/images/CFH_favicon.png}">
+	<link rel="stylesheet" href="../static/styles/style.css">
+	<meta charset="UTF-8">
+	<link rel="icon" href="../static/images/CFH_favicon.png">
     <title>CFH:LB Register</title>
-	<link th:href="@{/styles/nav-styles.css}" rel="stylesheet" type="text/css">
+	<title>CFH LiveBlog</title>
+	<link rel="icon" th:href="CFH_favicon.png">
+	<title>CFH LiveBlog</title>
+	<link th:href="static/styles/style.css" rel="stylesheet" type="text/css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
 <body>
-	<nav class="navbar">
-		<div class="container-fluid">
-			<div class="navbar-header">
-				<a class="navbar-brand" href="index.html" th:href="@{/}"><img th:src="@{/images/cfh_header_logo.png}" alt="CFH Logo"></a>
-			</div>
-			<ul class="nav navbar-nav nav-font">
-				<li class="active nav-font" sec:authorize="isAnonymous()"><a href="index.html" th:href="@{/}"><span class="glyphicon glyphicon-home glyph-font"></span> Home</a></li>
-
-				<li class="active nav-font" sec:authorize="isAuthenticated()"><a th:href="@{/}">Home</a></li>
-				<li class="active nav-font" sec:authorize="isAuthenticated()"><a th:href="@{/posts}">Posts</a></li>
-				<li class="active nav-font" sec:authorize="isAuthenticated()"><a th:href="@{/create-post}">Create Posts</a></li>
-				<li class="active nav-font" sec:authorize="isAuthenticated()"><a th:href="@{/users}">Users</a></li>
-			</ul>
-			<ul class="nav navbar-nav navbar-right nav-font">
-				<li class="span-display" th:switch="${#authentication}? ${#authorization.expression('isAuthenticated()')} : ${false}">
-					Logged in as
-					<span th:case="${false}">Guest</span>
-					<span th:case="${true}"><span sec:authentication="principal.username">Username</span></span>
-				</li>
-				<li><a href="users/register.html" sec:authorize="isAnonymous()" th:href="@{/register}"><span class="glyphicon glyphicon-user glyph-font"></span> Register</a></li>
-				<li><a href="users/login.html" sec:authorize="isAnonymous()" th:href="@{/login}"><span class="glyphicon glyphicon-log-in glyph-font"></span> Login</a></li>
-				<li sec:authorize="isAuthenticated()"><a th:href="@{/logout}"><span class="glyphicon glyphicon-log-out glyph-font"></span> Logout</a></li>
-			</ul>
+<nav class="navbar">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<a class="navbar-brand" href="index.html" th:href="@{/}"><img th:src="static/images/CFH_logo.png" alt="CFH Logo" src=""></a>
 		</div>
-	</nav>
-
-    <h1>Register A New Account</h1>
+		<ul class="nav navbar-nav nav-font">
+			<li class="active nav-font" sec:authorize="isAnonymous()"><a href="index.html" th:href="@{/}"><span class="glyphicon glyphicon-home glyph-font"></span> Home</a></li>
+			<li class="active nav-font" sec:authorize="isAuthenticated()"><a th:href="@{/}">Home</a></li>
+			<li class="active nav-font" sec:authorize="isAuthenticated()"><a th:href="@{/posts}">Posts</a></li>
+			<li class="active nav-font" sec:authorize="isAuthenticated()"><a th:href="@{/create-post}">Create Post</a></li>
+			<li class="active nav-font" sec:authorize="isAuthenticated()"><a th:href="@{/users}">Users</a></li>
+		</ul>
+		<ul class="nav navbar-nav navbar-right nav-font">
+			<li class="span-display" th:switch="${#authentication}? ${#authorization.expression('isAuthenticated()')} : ${false}">
+				Logged in as
+				<span th:case="${false}">Guest</span>
+				<span th:case="${true}"><span sec:authentication="principal.username">Username</span></span>
+			</li>
+			<li><a href="register.html" sec:authorize="isAnonymous()" th:href="@{/register}"><span class="glyphicon glyphicon-user glyph-font"></span> Register</a></li>
+			<li><a href="login.html" sec:authorize="isAnonymous()" th:href="@{/login}"><span class="glyphicon glyphicon-log-in glyph-font"></span> Login</a></li>
+			<li sec:authorize="isAuthenticated()"><a th:href="@{/logout}"><span class="glyphicon glyphicon-log-out glyph-font"></span> Logout</a></li>
+		</ul>
+	</div>
+</nav>
+    <h1 class="title-page">Register A New Account</h1>
 
 
         <!-- successful registration message -->
@@ -113,40 +49,40 @@
 
     <div class="">
 		<div class="">
-			<div class="">
+			<div class="login-register-container">
 
-				<div th:if="${param.error}">
-					<div class="alert alert-danger">A user with this email already exists.</div>
-				</div>
+<!--				<div th:if="${param.error}">-->
+<!--					<div class="alert alert-danger">A user with this email already exists.</div>-->
+<!--				</div>-->
 
-				<div th:if="${param.success}">
-					<div class="alert alert-info">You've successfully registered
-						to our awesome app!</div>
-				</div>
+<!--				<div th:if="${param.success}">-->
+<!--					<div class="alert alert-info">You've successfully registered-->
+<!--						to our awesome app!</div>-->
+<!--				</div>-->
 
 				<form th:action="@{/register}" method="post" th:object="${user}">
 					<div class="">
-						<label class="" for="firstName"> First Name </label>
-						<input id="firstName" class="" th:field="*{firstName}"/>
+						<label class="input-field" for="firstName">  </label>
+						<input id="firstName" class="input-field"" placeholder="Enter First Name" th:field="*{firstName}"/>
+					</div>
+
+					<div class=form-group">
+						<label class="input-field" for="lastName">  </label>
+                        <input id="lastName" class="input-field" placeholder="Enter Last Name" th:field="*{lastName}"/>
 					</div>
 
 					<div class="">
-						<label class="" for="lastName"> Last Name </label>
-                        <input id="lastName" class="" th:field="*{lastName}"/>
+						<label class="input-field" for="email">  </label>
+                        <input id="email" class="input-field" placeholder="Enter Email" th:field="*{email}"/>
 					</div>
 
 					<div class="">
-						<label class="" for="email"> Email </label>
-                        <input id="email" class="" th:field="*{email}"/>
+						<label class="" for="password">  </label>
+                        <input id="password" class="input-field" type="password" placeholder="Enter Password" th:field="*{password}"/>
 					</div>
 
 					<div class="">
-						<label class="" for="password"> Password </label> 
-                        <input id="password" class="" type="password" th:field="*{password}"/>
-					</div>
-
-					<div class="">
-						<button type="submit" class="">Register</button>
+						<button type="submit" class="login-register-button">Register</button> <br>
 						<span>Already registered? <a href="/" th:href="@{/login}">Login
 								here</a></span>
 					</div>
@@ -158,6 +94,5 @@
     <footer>
         <p>&copy 2022 The Astonishing X-Men</p>
     </footer>
->>>>>>> main
 </body>
 </html>

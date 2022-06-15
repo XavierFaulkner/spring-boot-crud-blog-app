@@ -123,26 +123,38 @@ footer{
 
 
 /*create-post.html, delete-post.html, edit-post.html */
-.new-blog {
+
+.blog-entry {
     text-align: center;
 }
-.title{
-    text-align: center;
-}
-
-.blog-content {
-display: block;
-text-align: center;
-}
-
 .buttons {
-    text-align: center;
-    float: inside;
-    margin-right:10px;
+    display: inline-block;
+    background-color: #4CAF50
+
+
 }
+/*users.html*/
+h1 {
+    font-weight: bold;
+}
+th {
+    background: #3a1027;
+    color: white;
+}
+table{
+    text-align: center;
+    width: 70%;
+}
+table, th, td {
+    border: 1px solid;
+}
+.user-container {
+    padding: 20px;
+}
+
 
 /* login.html */
-.login-container {
+.login-register-container {
     background: white;
     color: black;
     display: block;
@@ -170,15 +182,10 @@ text-align: center;
     width:100%;
     cursor:pointer;
 }
-.login-button {
+.login-register-button {
     background:linear-gradient(270deg, #3a1027, #d91a5f);
     width: 70%;
     border-style: none;
     color: white;
 
-}
-/* register.html */
-.register-body {
-    display: block;
-    text-align: center;
 }

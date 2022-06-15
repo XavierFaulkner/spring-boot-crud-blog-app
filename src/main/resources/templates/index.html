@@ -21,7 +21,7 @@
             </div>
             <ul class="nav navbar-nav nav-font">
                 <li class="active nav-font" sec:authorize="isAnonymous()"><a href="index.html" th:href="@{/}"><span class="glyphicon glyphicon-home glyph-font"></span> Home</a></li>
-<!--                <li class="active nav-font" sec:authorize="isAuthenticated()"><a th:href="@{/}">Home</a></li>-->
+                <li class="active nav-font" sec:authorize="isAuthenticated()"><a th:href="@{/}">Home</a></li>
                 <li class="active nav-font" sec:authorize="isAuthenticated()"><a th:href="@{/posts}">Posts</a></li>
                 <li class="active nav-font" sec:authorize="isAuthenticated()"><a th:href="@{/create-post}">Create Post</a></li>
                 <li class="active nav-font" sec:authorize="isAuthenticated()"><a th:href="@{/users}">Users</a></li>
@@ -32,8 +32,8 @@
                     <span th:case="${false}">Guest</span>
                     <span th:case="${true}"><span sec:authentication="principal.username">Username</span></span>
                 </li>
-                <li><a href="users/register.html" sec:authorize="isAnonymous()" th:href="@{/register}"><span class="glyphicon glyphicon-user glyph-font"></span> Register</a></li>
-                <li><a href="users/login.html" sec:authorize="isAnonymous()" th:href="@{/login}"><span class="glyphicon glyphicon-log-in glyph-font"></span> Login</a></li>
+                <li><a href="register.html" sec:authorize="isAnonymous()" th:href="@{/register}"><span class="glyphicon glyphicon-user glyph-font"></span> Register</a></li>
+                <li><a href="login.html" sec:authorize="isAnonymous()" th:href="@{/login}"><span class="glyphicon glyphicon-log-in glyph-font"></span> Login</a></li>
                 <li sec:authorize="isAuthenticated()"><a th:href="@{/logout}"><span class="glyphicon glyphicon-log-out glyph-font"></span> Logout</a></li>
             </ul>
         </div>

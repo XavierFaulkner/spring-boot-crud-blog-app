@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3" lang="en">
 <head>
     <link rel="stylesheet" href="../static/styles/style.css">
     <meta charset="UTF-8">
     <link rel="icon" href="../static/images/CFH_favicon.png">
     <title>CFH:LB Login</title>
-    <link th:href="@{/styles/nav-styles.css}" rel="stylesheet" type="text/css">
+    <link rel="icon" th:href="CFH_favicon.png">
+    <title>CFH LiveBlog</title>
+    <link th:href="static/styles/style.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
@@ -19,8 +21,7 @@
         </div>
         <ul class="nav navbar-nav nav-font">
             <li class="active nav-font" sec:authorize="isAnonymous()"><a href="index.html" th:href="@{/}"><span class="glyphicon glyphicon-home glyph-font"></span> Home</a></li>
-
-            <!--                <li class="active nav-font" sec:authorize="isAuthenticated()"><a th:href="@{/}">Home</a></li>-->
+            <li class="active nav-font" sec:authorize="isAuthenticated()"><a th:href="@{/}">Home</a></li>
             <li class="active nav-font" sec:authorize="isAuthenticated()"><a th:href="@{/posts}">Posts</a></li>
             <li class="active nav-font" sec:authorize="isAuthenticated()"><a th:href="@{/create-post}">Create Post</a></li>
             <li class="active nav-font" sec:authorize="isAuthenticated()"><a th:href="@{/users}">Users</a></li>
@@ -31,15 +32,15 @@
                 <span th:case="${false}">Guest</span>
                 <span th:case="${true}"><span sec:authentication="principal.username">Username</span></span>
             </li>
-            <li><a href="users/register.html" sec:authorize="isAnonymous()" th:href="@{/register}"><span class="glyphicon glyphicon-user glyph-font"></span> Register</a></li>
-            <li><a href="users/login.html" sec:authorize="isAnonymous()" th:href="@{/login}"><span class="glyphicon glyphicon-log-in glyph-font"></span> Login</a></li>
+            <li><a href="register.html" sec:authorize="isAnonymous()" th:href="@{/register}"><span class="glyphicon glyphicon-user glyph-font"></span> Register</a></li>
+            <li><a href="login.html" sec:authorize="isAnonymous()" th:href="@{/login}"><span class="glyphicon glyphicon-log-in glyph-font"></span> Login</a></li>
             <li sec:authorize="isAuthenticated()"><a th:href="@{/logout}"><span class="glyphicon glyphicon-log-out glyph-font"></span> Logout</a></li>
         </ul>
     </div>
 </nav>
 
     <h1 class="title-page">Login</h1>
-    <form th:action="@{/login}" method="post" class="login-container">
+    <form th:action="@{/login}" method="post" class="login-register-container">
         <!-- error message -->
 <!--        <div th:if="${param.error}">-->
 <!--            <div class="alert alert-danger">Invalid username or-->
@@ -69,7 +70,7 @@
         
         <div class="form-group">
                 <div class="login-bar">
-                    <input type="submit" class="login-button"
+                    <input type="submit" class="login-register-button"
                         value="Log In" />
                 </div>
             </div>
