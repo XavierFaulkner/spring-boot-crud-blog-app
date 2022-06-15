@@ -17,6 +17,7 @@ import java.util.stream.Collectors;
 @Controller
 public class PostController {
 
+    @Autowired
     private PostService postService;
     private UserService userService;
 
@@ -26,30 +27,31 @@ public class PostController {
         this.userService = userService;
     }
 
-    @GetMapping("/posts")
-    public String posts() {
-        return "posts";
-    }
-
     // @GetMapping("/posts")
-    // public String viewUserTable(Model model) {
-    //     return userPagination(1, model);
-    // }
-
-    // @GetMapping("/pages/{pageNo}")
-    // public String userPagination(@PathVariable(value = "pageNo") int pageNo, Model model) {
-    //     int pageSize = 5;
-
-    //     Page <Post> pages = postService.postPagination(pageNo, pageSize);
-    //     List <Post> listPosts = pages.getContent();
-
-    //     model.addAttribute("currentPage", pageNo);
-    //     model.addAttribute("totalPages", pages.getTotalPages());
-    //     model.addAttribute("totalItems", pages.getTotalElements());
-    //     model.addAttribute("listPosts", listPosts);
-        
+    // public String viewPostsTable(Model model) {
+    //     model.addAttribute("listPosts", postService.findAll());
     //     return "posts";
     // }
+
+    @GetMapping("/posts")
+    public String viewUserTable(Model model) {
+        return userPagination(1, model);
+    }
+
+    @GetMapping("/pages/{pageNo}")
+    public String userPagination(@PathVariable(value = "pageNo") int pageNo, Model model) {
+        int pageSize = 5;
+
+        Page <Post> pages = postService.postPagination(pageNo, pageSize);
+        List <Post> listPosts = pages.getContent();
+
+        model.addAttribute("currentPage", pageNo);
+        model.addAttribute("totalPages", pages.getTotalPages());
+        model.addAttribute("totalItems", pages.getTotalElements());
+        model.addAttribute("listPosts", listPosts);
+        
+        return "posts";
+    }
 
     @GetMapping("/create-post")
     public String createPostPage(Model model) {
