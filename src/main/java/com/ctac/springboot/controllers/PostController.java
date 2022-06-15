@@ -90,7 +90,7 @@ public class PostController {
     @GetMapping("/delete-post/{id}")
     public String deletePost(@PathVariable (value = "id") long id) {
         this.postService.deleteById(id);
-        return "redirect:/";
+        return "redirect:/posts";
     }
 
     @GetMapping("/edit-post")
