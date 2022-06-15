@@ -4,6 +4,7 @@ import com.ctac.springboot.controllers.dto.UserRegistrationDto;
 import com.ctac.springboot.models.User;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.domain.Page;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -18,4 +19,6 @@ public interface UserService extends UserDetailsService {
     Page<User> userPagination(int pageNo, int pageSize);
   
     User getUserByUsername(String username);
+
+    Optional<User> findById(Long id);
 }

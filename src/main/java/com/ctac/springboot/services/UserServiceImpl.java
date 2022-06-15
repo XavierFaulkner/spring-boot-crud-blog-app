@@ -18,6 +18,7 @@ import org.springframework.data.domain.Pageable;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import com.ctac.springboot.models.User;
@@ -66,6 +67,11 @@ public class UserServiceImpl implements UserService{
             throw new UsernameNotFoundException("Invalid username or password.");
         }
         return user;
+    }
+
+    @Override
+    public Optional<User> findById(Long id) {
+        return this.userRepository.findById(id);
     }
 
     private Collection<? extends GrantedAuthority> mapRolesToAuthorities(Collection<Role> roles){

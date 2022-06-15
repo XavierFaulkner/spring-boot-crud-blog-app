@@ -2,6 +2,7 @@ package com.ctac.springboot.services;
 
 import java.util.*;
 
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
@@ -16,4 +17,5 @@ public interface PostService {
     void save(Post post);
     void deleteById(Long id);
     Optional<Post> findById(Long id);
+    Page<Post> postPagination(int pageNo, int pageSize);
 }
