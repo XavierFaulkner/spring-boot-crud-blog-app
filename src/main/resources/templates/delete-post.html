@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3" lang="en">
 <head>
     <meta charset="UTF-8">
     <link rel="icon" th:href="@{/images/CFH_favicon.png}">
     <title>CFH:LB Delete Blog</title>
     <link th:href="@{/styles/nav-styles.css}" rel="stylesheet" type="text/css">
+    <link th:href="@{/styles/styles.css}" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
@@ -14,45 +15,18 @@
 
     <nav th:insert="fragments :: nav"></nav>
 
-    <h1 style="color:red;">Are you sure you want to delete this blog?</h1>
+    <h1 class="title-page" style="color:red;">Are you sure you want to delete this blog?</h1>
 
-    <div class = "">
-        <label for ="title">Title</label> :
-        <input type="text" class = ""
-        name="title" id="title"th:field = "">
-    </div>
-    
-    <div class = "">
-        <label for="content">Content</label> :
-        <textarea type="text" cols="40" rows="10" 
-        name="content" id="content" class = "" th:field = "">
-        </textarea>
-    </div>
-    
-    <div class="">
-        <div class="">
-            <div class="">
-                <input type="submit" name="delete-submit"
-                    class="" value="Delete" />
-            </div>
-        </div>
-    </div>
-    <div class="">
-        <div class="">
-            <div class="">
-                <input type="submit" name="cancel-submit"
-                    class="" value="Cancel" />
-            </div>
-        </div>
+    <div class="container">
+        <h1 th:text = "${title}"></h1>
+        <p th:text = "${authorFullName}"></p>
+        <p th:text = "${date}"></p>
+        <p th:text = "${content}"></p>
+        <p th:text = "${id}"></p>
     </div>
 
-    <div>
-        <p>Date: 00/00/0000 </p>
-    </div>
-
-    <div>
-        <p>Author ID: 000</p>
-    </div>
+    <a href="#" th:href="@{/posts}">Cancel</a>
+    <a href="#" th:href="@{/delete/{id}(id=${id})}">Delete</a>
 
     <footer th:insert="fragments :: footer"></footer>
 

@@ -27,12 +27,6 @@ public class PostController {
         this.userService = userService;
     }
 
-    // @GetMapping("/posts")
-    // public String viewPostsTable(Model model) {
-    //     model.addAttribute("listPosts", postService.findAll());
-    //     return "posts";
-    // }
-
     @GetMapping("/posts")
     public String viewUserTable(Model model) {
         return userPagination(1, model);
@@ -57,7 +51,7 @@ public class PostController {
     public String post(@PathVariable (value = "id") long id, Model model) {
         Post post = postService.findById(id).get();
         model.addAttribute("title", post.getTitle());
-        model.addAttribute("author", userService.findById(post.getAuthor().getId()).get().getFirstName());
+        model.addAttribute("authorFullName", post.getAuthorFullName());
         model.addAttribute("date", post.getDate());
         model.addAttribute("content", post.getContent());
         model.addAttribute("id", post.getId());
@@ -92,12 +86,24 @@ public class PostController {
         String authUsername = SecurityContextHolder.getContext().getAuthentication().getName();
         User user = userService.getUserByUsername(authUsername);
         post.setAuthor(user);
+        post.setAuthorFullName(user.getFirstName() + " " + user.getLastName());
         postService.create(post);
         return "redirect:/";
     }
 
     @GetMapping("/delete-post/{id}")
-    public String deletePost(@PathVariable (value = "id") long id) {
+    public String deletePost(@PathVariable (value = "id") long id, Model model) {
+        Post post = postService.findById(id).get();
+        model.addAttribute("title", post.getTitle());
+        model.addAttribute("authorFullName", post.getAuthorFullName());
+        model.addAttribute("date", post.getDate());
+        model.addAttribute("content", post.getContent());
+        model.addAttribute("id", post.getId());
+        return "delete-post";
+    }
+
+    @GetMapping("/delete/{id}")
+    public String delete(@PathVariable (value = "id") long id, @ModelAttribute("post") Post post) {
         this.postService.deleteById(id);
         return "redirect:/posts";
     }
