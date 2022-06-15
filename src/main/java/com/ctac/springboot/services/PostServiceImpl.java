@@ -44,7 +44,11 @@ public class PostServiceImpl implements PostService {
     public void deleteById(Long id) {
     this.postRepository.deleteById(id);
     }
-  
 
-    
+    @Override
+    public Optional<Post> findById(Long id) {
+        return this.postRepository.findById(id);
+    }
+
+
 }
