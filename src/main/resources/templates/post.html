@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <link rel="icon" th:href="@{/images/CFH_favicon.png}">
-    <title>CFH:LB Delete Blog</title>
+    <title>CFH:LB Blogs</title>
     <link th:href="@{/styles/nav-styles.css}" rel="stylesheet" type="text/css">
     <link th:href="@{/styles/styles.css}" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
@@ -13,22 +13,17 @@
 </head>
 <body>
 
-    <nav th:insert="fragments :: nav"></nav>
+<nav th:insert="fragments :: nav"></nav>
 
-    <h1 class="title-page" style="color:red;">Are you sure you want to delete this blog?</h1>
+<div class="container">
+    <h1 th:text = "${title}"></h1>
+    <p th:text = "${authorFullName}"></p>
+    <p th:text = "${date}"></p>
+    <p th:text = "${content}"></p>
+    <p th:text = "${id}"></p>
+</div>
 
-    <div class="container">
-        <h1 th:text = "${title}"></h1>
-        <p th:text = "${authorFullName}"></p>
-        <p th:text = "${date}"></p>
-        <p th:text = "${content}"></p>
-        <p th:text = "${id}"></p>
-    </div>
-
-    <a href="#" th:href="@{/posts}">Cancel</a>
-    <a href="#" th:href="@{/delete/{id}(id=${id})}">Delete</a>
-
-    <footer th:insert="fragments :: footer"></footer>
+<footer th:insert="fragments :: footer"></footer>
 
 </body>
 </html>

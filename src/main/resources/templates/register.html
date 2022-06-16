@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
-	  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+	  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3" lang="en">
 <head>
     <meta charset="UTF-8">
 	<link rel="icon" th:href="@{/images/CFH_favicon.png}">
@@ -8,6 +8,7 @@
 	<link th:href="@{/styles/nav-styles.css}" rel="stylesheet" type="text/css">
 	<link th:href="@{/styles/styles.css}" rel="stylesheet" type="text/css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
@@ -15,56 +16,60 @@
 
 	<nav th:insert="fragments :: nav"></nav>
 
+	<main>
+
     <h1>Register A New Account</h1>
 
-        <!-- successful registration message -->
-    <!-- <div th:if="">
-        <div class="alert alert-info">You have successfully registered an account.</div>
-    </div> -->
+	<div class="space"></div>
 
-    <div class="">
-		<div class="">
-			<div class="">
-
-				<div th:if="${errorMessage}" th:text="${errorMessage}" class="error_message">
+				<div class="form-wrapper2">
+				<form th:action="@{/register}" method="post" th:object="${user}" class="crud-center">
+					<div th:if="${errorMessage}" th:text="${errorMessage}" class="error_message">
 					
-				</div>
-
-				<div th:if="${param.success}">
-					<div class="alert alert-info">You've successfully registered
-						to our awesome app!</div>
-				</div>
-
-				<form th:action="@{/register}" method="post" th:object="${user}">
-					<div class="">
-						<label class="" for="firstName"> First Name </label>
-						<input id="firstName" class="" th:field="*{firstName}"/>
+					</div>
+	
+					<div th:if="${param.success}">
+						<div class="alert alert-info">You've successfully registered
+							to our awesome app!</div>
 					</div>
 
-					<div class="">
-						<label class="" for="lastName"> Last Name </label>
-                        <input id="lastName" class="" th:field="*{lastName}"/>
+					<div class="form-group field">
+						<!--<label class="" for="firstName"> First Name </label>-->
+						<i class='fa fa-user-circle-o'></i>
+						<input id="firstName" class="" th:field="*{firstName}" th:required="required" placeholder="First Name"/>
 					</div>
 
-					<div class="">
-						<label class="" for="email"> Email </label>
-                        <input id="email" class="" th:field="*{email}"/>
+					<div class="form-group field">
+						<!--<label class="" for="lastName"> Last Name </label>-->
+						<i class='fa fa-user-circle-o'></i>
+                        <input id="lastName" class="" th:field="*{lastName}" th:required="required" placeholder="Last Name"/>
 					</div>
 
-					<div class="">
-						<label class="" for="password"> Password </label> 
-                        <input id="password" class="" type="password" th:field="*{password}"/>
+					<div class="form-group field">
+						<!--<label class="" for="email"> Email </label>-->
+						<i class='fa fa-envelope'></i>
+                        <input id="email" class="" th:field="*{email}" th:required="required" placeholder="Email"/>
 					</div>
 
-					<div class="">
-						<button type="submit" class="">Register</button>
+					<div class="form-group field">
+						<!--<label class="" for="password"> Password </label>--> 
+						<i class="fa fa-lock" style="font-size: 2rem; margin-left: 18px;"></i>
+                        <input id="password" class="" type="password" th:field="*{password}" th:required="required" placeholder="Password"/>
+					</div>
+
+					<div class="submit-button">
+						<!--<button type="submit" class="">Register</button>-->
+						<input type="submit" class="" value="Register" />
+					</div>
+					
+					<div class="login-register-here">
 						<span>Already registered? <a href="/" th:href="@{/login}">Login
 								here</a></span>
+
 					</div>
 				</form>
 			</div>
-		</div>
-	</div>
+			</main>
 
 	<footer th:insert="fragments :: footer"></footer>
 

@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3" lang="en">
 <head>
     <meta charset="UTF-8">
     <link rel="icon" th:href="@{/images/CFH_favicon.png}">
     <title>CFH:LB Blogs</title>
     <link th:href="@{/styles/nav-styles.css}" rel="stylesheet" type="text/css">
+    <link th:href="@{/styles/styles.css}" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
@@ -18,51 +19,89 @@
         <h1>Blogs</h1>
 
             <!-- successful login message -->
-    <!-- <div th:if="">
+        <!-- <div th:if="">
         <div class="alert alert-xxx">Login Successful</div>
-    </div> -->
+        </div> -->
 
         <!-- post created message -->
-    <!-- <div th:if="">
+        <!-- <div th:if="">
         <div class="alert alert-xxx">Post created</div>
-    </div> -->
+        /div> -->
 
         <!-- post deleted message -->
-    <!-- <div th:if="">
+        <!-- <div th:if="">
         <div class="alert alert-xxx">Post has been deleted</div>
-    </div> -->
+        </div> -->
 
         <!-- post edited message -->
-    <!-- <div th:if="">
+        <!-- <div th:if="">
         <div class="alert alert-xxx">Post has been edited</div>
-    </div> -->
+        </div> -->
 
         <table border="1" class="">
-        <thead>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Title</th>
+                    <th>Content</th>
+                    <th>Date</th>
+                    <th>Author ID</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
             <tr>
-                <th>ID</th>
-                <th>Title</th>
-                <th>Content</th>
-                <th>Date</th>
-                <th>Author ID</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-
-        <tbody>
-            <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td>
-                    <a class="">Update</a>
-                    <a class="">Delete</a>
-                </td>
-            </tr>
-        </tbody>
+            
+            <tbody>
+            <tr th:each = "post : ${listPosts}">
+                    <td th:text = "${post.id}"></td>
+                    <td th:text = "${post.title}"></td>
+                    <td th:text = "${post.content}"></td>
+                    <td th:text = "${post.date}"></td>
+                    <td th:text = "${post.authorFullName}"></td>
+                    <td>
+                        <a href="#" th:href="@{/edit-post/{id}(id=${post.id})}">Edit</a>
+                        <a href="#" th:href="@{/delete-post/{id}(id=${post.id})}">Delete</a>
+<!--                        <a href="#" th:href="@{/delete-post/{id}(id=${post.id})}">Delete</a>-->
+                    </td>
+                </tr>
+            </tbody>
         </table>
+    
+        <div th:if="${totalPages > 1}">
+            <div class="">
+                <div class="">
+                    Total Blog Posts: [[${totalItems}]]
+                </div>
+    
+                <div class="">
+                        <a th:if="${currentPage > 1}" th:href="@{'/pages/1'}">First</a>
+                    <span th:unless="${currentPage > 1}">First</span>
+                </div>
+    
+                <div class="">
+                    <a th:if="${currentPage > 1}" th:href="@{'/pages/' + ${currentPage - 1}}">Previous</a>
+                    <span th:unless="${currentPage > 1}">Previous</span>
+                </div>
+    
+                <div class="">
+                    <span th:each="i: ${#numbers.sequence(1, totalPages)}">
+                    <a th:if="${currentPage != i}" th:href="@{'/pages/' + ${i}}">[[${i}]]</a>
+                    <span th:unless="${currentPage != i}">[[${i}]]</span> &nbsp; &nbsp;
+                    </span>
+                </div>
+    
+                <div class="">
+                    <a th:if="${currentPage < totalPages}" th:href="@{'/pages/' + ${currentPage + 1}}">Next</a>
+                    <span th:unless="${currentPage < totalPages}">Next</span>
+                </div>
+        
+                <div class="">
+                    <a th:if="${currentPage < totalPages}" th:href="@{'/pages/' + ${totalPages}}">Last</a>
+                    <span th:unless="${currentPage < totalPages}">Last</span>
+                </div>
+            </div>
+        </div>
+
 
     </div>
 

@@ -33,19 +33,24 @@ public class Post {
     @Column(nullable = false)
     private Date date = new Date();
 
+    @Column(nullable = false)
+    private String authorFullName;
+
     public Post(){}
 
-    public Post(long id, String title, String content, User author){
+    public Post(long id, String title, String content, User author, String authorFullName){
         this.id  = id;
         this.title = title;
         this.content = content;
         this.author = author;
+        this.authorFullName = authorFullName;
     }
 
-    public Post(String title, String content, User author){
+    public Post(String title, String content, User author, String authorFullName){
         this.title = title;
         this.content = content;
         this.author = author;
+        this.authorFullName = authorFullName;
     }
 
     /**
@@ -129,4 +134,11 @@ public class Post {
             '}';
     }
 
+    public String getAuthorFullName() {
+        return authorFullName;
+    }
+
+    public void setAuthorFullName(String authorFullName) {
+        this.authorFullName = authorFullName;
+    }
 }
