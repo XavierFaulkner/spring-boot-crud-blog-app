@@ -17,6 +17,7 @@ import java.util.stream.Collectors;
 @Controller
 public class PostController {
 
+    @Autowired
     private PostService postService;
     private UserService userService;
 
@@ -46,14 +47,26 @@ public class PostController {
         return "posts";
     }
 
+    @GetMapping("/post/{id}")
+    public String post(@PathVariable (value = "id") long id, Model model) {
+        Post post = postService.findById(id).get();
+        model.addAttribute("title", post.getTitle());
+        model.addAttribute("authorFullName", post.getAuthorFullName());
+        model.addAttribute("date", post.getDate());
+        model.addAttribute("content", post.getContent());
+        model.addAttribute("id", post.getId());
+        return "post";
+    }
+
     @GetMapping("/create-post")
     public String createPostPage(Model model) {
         String authUsername = SecurityContextHolder.getContext().getAuthentication().getName();
         User user = userService.getUserByUsername(authUsername);
         Object title, content;
+        String authorFullName = "";
         title = model.getAttribute("title");
         content = model.getAttribute("content");
-        Post post = new Post((String)title,(String)content,user);
+        Post post = new Post((String)title,(String)content,user, authorFullName);
         model.addAttribute("post", post);
         return "create-post";
     }
@@ -63,29 +76,53 @@ public class PostController {
         String authUsername = SecurityContextHolder.getContext().getAuthentication().getName();
         User user = userService.getUserByUsername(authUsername);
         post.setAuthor(user);
+        post.setAuthorFullName(user.getFirstName() + " " + user.getLastName());
         postService.create(post);
-        return "redirect:/";
+        return "redirect:/posts";
+    }
+
+    @PostMapping("/save")
+    public String updatePost(@ModelAttribute("post") Post post) {
+        String authUsername = SecurityContextHolder.getContext().getAuthentication().getName();
+        User user = userService.getUserByUsername(authUsername);
+        post.setAuthor(user);
+        post.setAuthorFullName(user.getFirstName() + " " + user.getLastName());
+        postService.create(post);
+        return "redirect:/posts";
     }
 
     @GetMapping("/delete-post/{id}")
-    public String deletePost(@PathVariable (value = "id") long id) {
-        this.postService.deleteById(id);
-        return "redirect:/";
+    public String deletePost(@PathVariable (value = "id") long id, Model model) {
+        Post post = postService.findById(id).get();
+        model.addAttribute("title", post.getTitle());
+        model.addAttribute("authorFullName", post.getAuthorFullName());
+        model.addAttribute("date", post.getDate());
+        model.addAttribute("content", post.getContent());
+        model.addAttribute("id", post.getId());
+        return "delete-post";
     }
 
-    @GetMapping("/edit-post")
-    public String editPost() {
+    @GetMapping("/delete/{id}")
+    public String delete(@PathVariable (value = "id") long id, @ModelAttribute("post") Post post) {
+        this.postService.deleteById(id);
+        return "redirect:/posts";
+    }
+
+    @GetMapping("/edit-post/{id}")
+    public String editPost(@PathVariable (value = "id") Long id, Model model) {
+        Post post = postService.findById(id).get();
+        model.addAttribute("post", post);
         return "edit-post";
     }
 
     @GetMapping("/")
     public String index(Model model) {
-//        List<Post> latest5Posts = postService.findLatest5();
-//        model.addAttribute("latest5posts", latest5Posts);
-//
-//        List<Post> latest3Posts = latest5Posts.stream()
-//                .limit(3).collect(Collectors.toList());
-//        model.addAttribute("latest3posts", latest3Posts);
+        List<Post> latest5Posts = postService.findLatest5();
+        model.addAttribute("latest5posts", latest5Posts);
+
+        List<Post> latest3Posts = latest5Posts.stream()
+                .limit(3).collect(Collectors.toList());
+        model.addAttribute("latest3posts", latest3Posts);
 
         return "index";
     }

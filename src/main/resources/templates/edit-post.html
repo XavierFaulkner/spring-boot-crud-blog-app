@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
-    xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+    xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3" lang="en">
 <head>
     <meta charset="UTF-8">
     <link rel="icon" th:href="@{/images/CFH_favicon.png}">
     <title>CFH:LB Edit Blog</title>
     <link th:href="@{/styles/nav-styles.css}" rel="stylesheet" type="text/css">
+    <link th:href="@{/styles/styles.css}" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
@@ -14,9 +15,29 @@
   
     <nav th:insert="fragments :: nav"></nav>
 
-    <h1>Edit a Blog</h1>
+    <h1 class="title-page">Edit a Blog</h1>
 
-    <div class = "">
+    <form class="blog-entry" action="#" th:action="@{/save}" th:object="${post}" method="POST">
+        <input type="hidden" th:field="*{id}" />
+        <div>
+            <label for ="title">Title</label> :
+            <input type="text" class = ""
+                   name = "title" id="title"
+                   th:field="*{title}" th:required="required">
+        </div>
+        <div>
+            <label for="content">Content</label> :
+            <textarea type="text" cols="40" rows="10"
+                      name="content" id="content" class = ""
+                      th:field="*{content}" th:required="required"></textarea>
+        </div>
+        <div>
+            <button type="submit" class="btn btn-default">Edit</button>
+            <a th:href="@{/posts}" class="btn btn-default">Cancel</a>
+        </div>
+    </form>
+
+    <!--<div class = "">
         <label for="title">Title</label> :
         <input type="text" class = ""
         name="title" id="title" th:field = "">
@@ -52,7 +73,7 @@
 
     <div>
         <p>Author ID: 000</p>
-    </div>
+    </div>-->
 
     <footer th:insert="fragments :: footer"></footer>
 
