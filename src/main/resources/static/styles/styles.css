@@ -49,6 +49,7 @@ footer{
     /*background:#3A1027;*/
     font-weight: bolder;
     text-align: center;
+    padding-top: 20px;
     color: white;
     background: linear-gradient(270deg,#3a1027, #d91a5f);
     background-size: 400% 400%;
@@ -193,7 +194,7 @@ h1 {
 
 .container-blogs {
     padding: 10px;
-    margin-left: 40px;
+    margin-left: 43px;
     text-align: center;
 } 
 
@@ -205,7 +206,7 @@ h1 {
 .posts {
     font-family: Arial, Helvetica, sans-serif;
     border-collapse: collapse;
-    width: 95%;
+    width: 96%;
     justify-content: center;
     justify-self: center;
     justify-items: center;
