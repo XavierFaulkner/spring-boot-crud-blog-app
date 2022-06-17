@@ -583,3 +583,28 @@ div > .cancel {
     font-weight: bold;
 }
 
+/*Delete page*/
+.delete-title-page {
+    margin: 20px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.delete-page-buttons {
+    display: flex;
+    justify-content: center;
+}
+
+.cancel-button:hover {
+    color: rgb(244, 122, 55);
+}
+
+.delete-button:hover {
+    color:rgb(244, 122, 55);
+}
+
+.blog-container-delete {
+    width: 70%;
+    margin: 15px auto;
+    box-shadow: -4px 4px;
+}

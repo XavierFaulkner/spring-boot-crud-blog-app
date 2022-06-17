@@ -42,8 +42,10 @@
                         <td th:text = "${post.date}"></td>
                         <td th:text = "${post.authorFullName}"></td>
                         <td>
-                            <a href="#" th:href="@{/edit-post/{id}(id=${post.id})}" class="btn btn-info">Edit</a>
-                            <a href="#" th:href="@{/delete-post/{id}(id=${post.id})}" class="btn btn-danger">Delete</a>
+                            <div th:if=">
+                                <a href="#" th:href="@{/edit-post/{id}(id=${post.id})}" class="btn btn-info">Edit</a>
+                                <a href="#" th:href="@{/delete-post/{id}(id=${post.id})}" class="btn btn-danger">Delete</a>
+                            </div>
                         </td>
                     </tr>
                 </tbody>
@@ -57,8 +59,8 @@
                         <a class="page-link" tabindex="-1" aria-disabled="true" th:if="${currentPage > 1}" th:href="@{'/pages/1'}">First</a>
                         <span th:unless="${currentPage > 1}">First</span>
                     </li>
-                    <li class="page-item"><a class="page-link" 
-                        <a th:if="${currentPage > 1}" th:href="@{'/pages/' + ${currentPage - 1}}">&#60;</a>
+                    <li class="page-item">
+                        <a th:if="${currentPage > 1}" th:href="@{'/pages/' + ${currentPage - 1}}" class="page-link">&#60;</a>
                         <span th:unless="${currentPage > 1}">&#60;</span> 
                     </li>
                     <li class="page-item">
