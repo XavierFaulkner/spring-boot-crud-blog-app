@@ -5,6 +5,11 @@ import java.util.Date;
 
 import javax.persistence.*;
 import javax.persistence.GenerationType;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
+
+import org.aspectj.lang.annotation.RequiredTypes;
+
 
 
 @Entity

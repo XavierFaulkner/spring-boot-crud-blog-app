@@ -82,14 +82,23 @@ public class PostController {
     }
 
     @PostMapping("/save")
-    public String updatePost(@ModelAttribute("post") Post post) {
+    public String updatePost(@ModelAttribute("post") Post post, Model model) {
         String authUsername = SecurityContextHolder.getContext().getAuthentication().getName();
         User user = userService.getUserByUsername(authUsername);
+
+       /*if (post.getTitle().isEmpty()) {
+            model.addAttribute("errorMessage", "Field Cannot Be Empty");
+            return "/edit-post/{id}";
+        } if (post.getContent().isEmpty()) {
+            model.addAttribute("errorMessage", "Field Cannot Be Empty");
+            return "/edit-post/{id}";
+        }*/
         post.setAuthor(user);
         post.setAuthorFullName(user.getFirstName() + " " + user.getLastName());
         postService.create(post);
         return "redirect:/posts";
-    }
+        }
+
 
     @GetMapping("/delete-post/{id}")
     public String deletePost(@PathVariable (value = "id") long id, Model model) {
