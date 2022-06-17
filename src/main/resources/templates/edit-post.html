@@ -15,65 +15,30 @@
   
     <nav th:insert="fragments :: nav"></nav>
 
-    <h1 class="title-page">Edit a Blog</h1>
+    <main>
+    <h1>Edit Your Post</h1>
 
     <form class="blog-entry" action="#" th:action="@{/save}" th:object="${post}" method="POST">
         <input type="hidden" th:field="*{id}" />
         <div>
-            <label for ="title">Title</label> :
-            <input type="text" class = ""
+            <!--<label for ="title">Title</label> :-->
+            <input type="text" class = "title-input"
                    name = "title" id="title"
                    th:field="*{title}" th:required="required">
         </div>
         <div>
-            <label for="content">Content</label> :
+            <!--<label for="content">Content</label> :-->
             <textarea type="text" cols="40" rows="10"
-                      name="content" id="content" class = ""
+                      name="content" id="content" class = "content-input"
                       th:field="*{content}" th:required="required"></textarea>
         </div>
         <div>
-            <button type="submit" class="btn btn-default">Edit</button>
-            <a th:href="@{/posts}" class="btn btn-default">Cancel</a>
+            <button type="submit" class="btn btn-default post">Edit</button>
+            <a th:href="@{/posts}" class="btn btn-default cancel">Cancel</a>
         </div>
     </form>
-
-    <!--<div class = "">
-        <label for="title">Title</label> :
-        <input type="text" class = ""
-        name="title" id="title" th:field = "">
-    </div>
+    </main>
     
-    <div class = "">
-        <label for="content">Content</label> :
-        <textarea type="text" cols="40" rows="10" 
-        name="content" id="content" class = "" th:field = "">
-        </textarea>
-    </div>
-    
-    <div class="">
-        <div class="">
-            <div class="">
-                <input type="submit" name="create-submit"
-                    class="" value="Create" />
-            </div>
-        </div>
-    </div>
-    <div class="">
-        <div class="">
-            <div class="">
-                <input type="submit" name="cancel-submit"
-                    class="" value="Cancel" />
-            </div>
-        </div>
-    </div>
-
-    <div>
-        <p>Date: 00/00/0000 </p>
-    </div>
-
-    <div>
-        <p>Author ID: 000</p>
-    </div>-->
 
     <footer th:insert="fragments :: footer"></footer>
 
