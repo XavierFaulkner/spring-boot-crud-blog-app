@@ -26,14 +26,15 @@
             <input type="text" class = "title-input"
                    name = "title" id="title"
                    th:field="*{title}"
-                   placeholder="Enter Title Here" th:required="required">
+                   placeholder="Enter Blog Title" th:required="required">
+
         </div>
         <div>
             <!--<label for="content">Content</label> :-->
             <textarea type="text" cols="40" rows="10"
                       name="content" id="content" class = "content-input"
                       th:field="*{content}"
-                      placeholder="Enter Comments Here" th:required="required"></textarea>
+                      placeholder="Enter Blog Content" th:required="required"></textarea>
         </div>
         <div>
             <button type="submit" class="btn btn-default post">Post</button>

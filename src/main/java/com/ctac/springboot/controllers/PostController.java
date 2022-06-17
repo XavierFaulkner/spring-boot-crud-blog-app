@@ -78,7 +78,7 @@ public class PostController {
         post.setAuthor(user);
         post.setAuthorFullName(user.getFirstName() + " " + user.getLastName());
         postService.create(post);
-        return "redirect:/";
+        return "redirect:/posts";
     }
 
     @PostMapping("/save")
@@ -97,8 +97,8 @@ public class PostController {
         post.setAuthorFullName(user.getFirstName() + " " + user.getLastName());
         postService.create(post);
         return "redirect:/posts";
-
         }
+
 
     @GetMapping("/delete-post/{id}")
     public String deletePost(@PathVariable (value = "id") long id, Model model) {

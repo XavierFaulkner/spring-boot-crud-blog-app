@@ -93,8 +93,8 @@ footer{
 .container {
     text-align: left;
     padding: 5px;
-
 }
+
 .posts{
     font-weight: bold;
 }
@@ -147,25 +147,113 @@ footer{
 
 
 }
+
 /*users.html*/
 /*h1 {
     font-weight: bold;
 } */
 
 th {
+=======
+/* TABLES */
+
+.user {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 60%;
+    justify-content: center;
+    justify-self: center;
+    justify-items: center;
+}
+
+.user td
+.user th {
+    border: 1px solid black;
+    padding: 8px;
+    color: white;
+    text-align: center;
+}
+
+.user tr:nth-child(even) {
+    background-color: silver;
+}
+
+.user tr:nth-child(odd) {
+    background-color: darkgray;
+}
+
+.user tr:hover {
+    background-color: whitesmoke;
+}
+
+.user th {
+    border: 1px solid black;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: center;
     background: #3a1027;
     color: white;
 }
-table{
-    text-align: center;
-    width: 70%;
-}
-table, th, td {
-    border: 1px solid;
-}
-.user-container {
+
+/* .btn btn-info {
+    margin-right: 25px;
+} */
+
+.container-users {
     padding: 20px;
+    margin-left: 80px;
+    text-align: center;
+} 
+
+.container-blogs {
+    padding: 10px;
+    margin-left: 40px;
+    text-align: center;
+} 
+
+.table-title {
+    text-align: left;
 }
+
+/* POSTS */
+.posts {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 95%;
+    justify-content: center;
+    justify-self: center;
+    justify-items: center;
+}
+
+.posts td
+.posts th {
+    border: 1px solid black;
+    padding: 8px;
+    color: white;
+    text-align: center;
+}
+
+.posts tr:nth-child(even) {
+    background-color: silver;
+}
+
+.posts tr:nth-child(odd) {
+    background-color: darkgray;
+}
+
+.posts tr:hover {
+    background-color: whitesmoke;
+}
+
+.posts th {
+    border: 1px solid black;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: center;
+    background: #3a1027;
+    color: white;
+}
+
 
 
 /* login.html */
@@ -204,7 +292,6 @@ table, th, td {
     width: 70%;
     border-style: none;
     color: white;
-
 }*/
 
 /*CRUD CSS*/
@@ -359,6 +446,3 @@ div > .cancel {
     font-weight: bold;
 }
 
-
-
- 
