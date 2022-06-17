@@ -88,7 +88,7 @@ public class PostController {
         post.setAuthor(user);
         post.setAuthorFullName(user.getFirstName() + " " + user.getLastName());
         postService.create(post);
-        return "redirect:/";
+        return "redirect:/posts";
     }
 
     @GetMapping("/delete-post/{id}")

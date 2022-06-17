@@ -15,8 +15,8 @@
 
     <nav th:insert="fragments :: nav"></nav>
 
-    <h1>CFH Login</h1>
-    <form th:action="@{/login}" method="post">
+    <h1 class="title-page" >CFH Login</h1>
+    <form th:action="@{/login}" method="post" class="login-register-container">
         <!-- error message -->
         <div th:if="${param.error}">
             <div class="alert alert-danger">Invalid username/email or
@@ -29,25 +29,27 @@
         </div>
 
         <div class = "form-group">
-            <label for="username"> E-Mail </label> :
-            <input type="text" 
-            class = ""
-            name="username" id="username"
-            placeholder="Enter e-mail as username">
+            <div class = login-bar>
+                <label for="username"> E-Mail </label> :
+                <input type="text"
+                       class = "input-field"
+                       name="username" id="username"
+                       placeholder="Enter e-mail as username">
+            </div>
         </div>
 
         <div class="form-group">
             <label for="password">Password</label>: 
             <input type="password"
-                class=""
+                class="input-field"
                 name="password" id="password"
                 placeholder="Enter password" />
         </div>
         
         <div class="form-group">
             <div class="">
-                <div class="">
-                    <input type="submit" class="" 
+                <div class="login-bar">
+                    <input type="submit" class="login-register-button"
                         value="Log In" />
                 </div>
             </div>

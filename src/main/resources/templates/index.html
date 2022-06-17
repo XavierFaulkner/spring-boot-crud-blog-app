@@ -16,24 +16,36 @@
   
     <nav th:insert="fragments :: nav"></nav>
     
-    <h1>Carolina Fintech Hub Live Blog</h1>
-
-    <div id="firstThreeBlogs">
-        <div class="blogContainer" th:each="post : ${latest3posts}">
-            <h1 th:text = "${post.title}"></h1>
-            <p th:text = "${post.authorFullName}"></p>
-            <p th:text = "${post.date}"></p>
-            <p th:text = "${post.content}"></p>
-            <p th:text = "${post.id}"></p>
+    <h1 class="title-page">Carolina Fintech Hub Live Blog</h1>
+    <div id="main-content">
+        <div id="three-blogs-holder">
+            <div id="recent-post-title">
+                <h2>Recent Posts</h2>
+            </div>
+            <div class="blog-container" th:each="post : ${latest3posts}">
+                <div class="blog-container-title">
+                    <h2 th:text = "${post.title}"></h2>
+                </div>
+                <div class="blog-container-content">
+                    <p th:text = "${post.content}"></p>
+                </div>
+                <div class="blog-container-footer">
+                    <p>Posted by: <span th:text = "${post.authorFullName}"></span> on <span th:text = "${post.date}"></span></p>
+                </div>
+            </div>
         </div>
-    </div>
-
-    <div class = "sidebar">
-        <p>Link one</p>
-        <p>Link two</p>
-        <p>Link three</p>
-        <p>Link four</p>
-        <p>Link five</p>
+        <div id="sidebar-holder">
+            <div class = "sidebar">
+                <div id="sidebar-title">
+                    <h3>Latest 5 Posts</h3>
+                </div>
+                <div id="sidebar-content">
+                    <div th:each="post : ${latest5posts}" class="sidebar-link">
+                        <a th:href="@{/post/{id}(id=${post.id})}" th:text="${post.title}"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <footer th:insert="fragments :: footer"></footer>
